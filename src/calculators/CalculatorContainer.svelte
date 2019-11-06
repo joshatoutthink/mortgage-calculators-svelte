@@ -1,5 +1,5 @@
 <script>
-  import MortgagePaymentCalculator from "./MortgagePaymentCalculator.svelte";
+  import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
 
   let activeCalculator = MortgagePaymentCalculator;
 </script>

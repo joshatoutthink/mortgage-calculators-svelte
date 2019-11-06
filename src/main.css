@@ -9,3 +9,72 @@ html {
 
   font-family: 'Roboto', sans-serif;
 }
+
+input,
+label,
+select,
+option {
+  font-size: 1.8rem;
+}
+
+input:not([type='submit']),
+select {
+  @apply px-4;
+
+  height: 35px;
+  width: 240px;
+
+  border: 1px solid #ccc;
+}
+
+.bg-gray-custom {
+  background-color: #f2f2f2;
+}
+
+/** buttons **/
+.btn {
+  @apply border-b border-transparent text-center text-white font-medium px-2 py-3 cursor-pointer appearance-none;
+
+  background-color: #870f54;
+
+  transition: padding 0.2s ease-in-out;
+}
+
+.btn-action {
+  font-size: 1.6rem;
+}
+
+.btn-outer {
+  @apply border-2 border-solid bg-transparent p-2 flex items-center justify-center cursor-pointer;
+
+  border-color: #870f54;
+
+  height: 54px;
+  width: 275px;
+
+  transition: padding 0.25s ease-in-out;
+}
+
+.btn-outer:hover {
+  @apply p-0;
+}
+
+.btn-outer:hover > .btn {
+  @apply px-2 py-5;
+}
+
+@media (min-width: 768px) {
+  .btn-action {
+    font-size: 2rem;
+  }
+
+  .btn-outer {
+    @apply p-4;
+
+    height: 70px;
+  }
+
+  .btn-outer:hover > .btn {
+    @apply px-4 py-8;
+  }
+}
