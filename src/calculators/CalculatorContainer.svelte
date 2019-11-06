@@ -1,11 +1,20 @@
 <script>
+  import CalculatorSelect from "./CalculatorSelect.svelte";
+  import IncomeRequiredCalculator from "./incomeRequiredCalculator/IncomeRequiredCalculator.svelte";
   import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
 
   let activeCalculator = MortgagePaymentCalculator;
+
+  let calculators = { MortgagePaymentCalculator, IncomeRequiredCalculator };
+
+  function setActiveCalculator(calculator) {
+    activeCalculator = calculators[calculator];
+  }
 </script>
 
 <section aria-label="Mortgage Calculators" class="flex justify-center">
   <div class="container">
+    <CalculatorSelect {setActiveCalculator} />
     <div class="border border-gray">
       <svelte:component this={activeCalculator} />
     </div>

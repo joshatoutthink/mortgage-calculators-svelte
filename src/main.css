@@ -78,3 +78,24 @@ select {
     @apply px-4 py-8;
   }
 }
+
+.calculator-select-item {
+  transition: transform 0.25s ease-in-out;
+}
+
+.calculator-select-item:hover {
+  @apply bg-black;
+}
+
+.calculator-select-item:hover p {
+  @apply text-white;
+}
+
+.calculator-select-item:hover svg {
+  transform: scale(1.1);
+}
+.calculator-select-item svg {
+  height: 100%;
+
+  transition: transform 0.25s ease-in-out;
+}
