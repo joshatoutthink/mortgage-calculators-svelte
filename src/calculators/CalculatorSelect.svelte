@@ -4,7 +4,6 @@
   import MortgagePaymentCalculatorIconGray from "../icons/MortgagePaymentCalculatorIconGray.svelte";
   import RefinanceSavingsCalculatorIconGray from "../icons/RefinanceSavingsCalculatorIconGray.svelte";
 
-  export let activeCalculator;
   export let setActiveCalculator;
 </script>
 

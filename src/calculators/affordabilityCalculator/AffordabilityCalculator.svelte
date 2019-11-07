@@ -211,7 +211,7 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex px-16 py-8">
+        <div class="flex px-16 py-8 w-4/5">
           <div class="w-1/3">
             <p class="text-3xl">Maximum Monthly Mortgage Payment</p>
             <p class="text-3xl font-light py-4">

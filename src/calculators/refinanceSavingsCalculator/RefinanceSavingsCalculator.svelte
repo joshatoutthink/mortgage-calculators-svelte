@@ -7,12 +7,12 @@
 
   // fields
   let originalInterestRate = {
-    value: "0",
+    value: "3.50",
     error: false,
     errorMessage: "Please enter a value"
   };
   let originalLoanAmount = {
-    value: "",
+    value: "30000000",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -22,22 +22,22 @@
     errorMessage: "Please select a loan term"
   };
   let timeLeftToPayOnOriginalLoan = {
-    value: "",
+    value: "120",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newInterestRate = {
-    value: "0",
+    value: "3.25",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newLoanAmount = {
-    value: "",
+    value: "10000000",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newLoanTerm = {
-    value: "30",
+    value: "20",
     error: false,
     errorMessage: "Please select a loan term"
   };
@@ -50,8 +50,8 @@
   };
   let newLoanValues = {
     monthlyPayment: "",
-    remainingLoanBalance: "",
-    remainingTotalCost: ""
+    monthlySavings: "",
+    totalCost: ""
   };
   let totalSavings = "";
 
@@ -106,20 +106,19 @@
 
     calculated = true;
 
-    // spreading existing values into these doesn't actually do anything does it...
-    oldLoanValues = {
-      ...oldLoanValues,
-      monthlyPayment: "1,000.00",
-      remainingLoanBalance: "200,000.00",
-      remainingTotalCost: "300,000.00"
-    };
+    const calculatedRefinanceSavings = calculateRefinanceSavings(
+      originalInterestRate.value,
+      originalLoanAmount.value,
+      originalLoanTerm.value,
+      timeLeftToPayOnOriginalLoan.value,
+      newInterestRate.value,
+      newLoanAmount.value,
+      newLoanTerm.value
+    );
 
-    newLoanValues = {
-      ...newLoanValues,
-      monthlyPayment: "900.00",
-      remainingLoanBalance: "175,000.00",
-      remainingTotalCost: "200,000.00"
-    };
+    oldLoanValues = calculatedRefinanceSavings[0];
+    newLoanValues = calculatedRefinanceSavings[1];
+    totalSavings = calculatedRefinanceSavings[2];
   }
 </script>
 
@@ -277,8 +276,55 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex px-16 py-8">
-          <!-- -->
+        <div class="px-16 py-8 w-4/5">
+          <div>
+            <p class="text-4xl text-center">Old Loan</p>
+            <div class="flex items-center pt-10 pb-16">
+              <div class="w-1/3">
+                <p class="text-3xl">Monthly Payment</p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.monthlyPayment}
+                </p>
+              </div>
+              <div class="w-1/3">
+                <p class="text-3xl">Remaining Loan Balance</p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.remainingBalance}
+                </p>
+              </div>
+              <div class="w-1/3">
+                <p class="text-3xl">Remaining Total Cost</p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.remainingTotal}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="text-4xl text-center">New Loan</p>
+            <div class="flex items-center pt-10 pb-16">
+              <div class="w-1/3">
+                <p class="text-3xl">Monthly Payment</p>
+                <p class="text-3xl font-light">
+                  ${newLoanValues.monthlyPayment}
+                </p>
+              </div>
+              <div class="w-1/3">
+                <p class="text-3xl">Monthly Savings</p>
+                <p class="text-3xl font-light">
+                  ${newLoanValues.monthlySavings}
+                </p>
+              </div>
+              <div class="w-1/3">
+                <p class="text-3xl">Remaining Total Cost</p>
+                <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl">Total Savings</p>
+            <p class="text-3xl font-light">${totalSavings}</p>
+          </div>
         </div>
       </div>
     {/if}

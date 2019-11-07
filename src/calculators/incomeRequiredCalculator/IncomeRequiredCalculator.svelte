@@ -188,7 +188,7 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="px-16 py-8">
+        <div class="px-16 py-8 w-4/5">
           <p class="text-3xl">Required Salary</p>
           <p class="text-3xl font-light py-4">${requiredSalary}</p>
         </div>
