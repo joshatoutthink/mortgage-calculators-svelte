@@ -99,3 +99,7 @@ select {
 
   transition: transform 0.25s ease-in-out;
 }
+
+.calculator-field {
+  width: 275px;
+}

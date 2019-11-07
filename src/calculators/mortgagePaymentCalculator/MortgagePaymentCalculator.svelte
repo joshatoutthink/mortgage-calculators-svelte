@@ -1,4 +1,6 @@
 <script>
+  // import input formatting functions
+  import { formatCurrency, formatPercentage } from "../../util";
   // calculate payment function
   import calculateMortgagePayment from "./calculateMortgagePayment";
 
@@ -7,6 +9,7 @@
     value: "",
     touched: false,
     error: false,
+
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
@@ -28,52 +31,22 @@
   // has result been calculated?
   let calculated = false;
 
-  function formatCurrency(value) {
-    const currencyFormat = parseFloat(
-      value
-        .replace(/(.*){1}/, "0$1")
-        .replace(/[^\d]/g, "")
-        .replace(/(\d\d?)$/, ".$1")
-    ).toLocaleString("en-US", {
-      maximumFractionDigits: 2,
-      minimumFractionDigits: 2
-    });
-    value = `$${currencyFormat}`;
-
-    return value;
-  }
-
-  function formatPercentage(value) {
-    const percentValue = (parseFloat(value.replace(/\D/g, "")) / 100).toFixed(
-      2
-    );
-    value = `${percentValue}%`;
-
-    return value;
-  }
-
   // reactive statement to format input values when they change
   $: {
     totalHomeLoanAmount.value = formatCurrency(totalHomeLoanAmount.value);
     annualInterestRate.value = formatPercentage(annualInterestRate.value);
   }
 
-  $: if (totalHomeLoanAmount.value !== "$0.00") {
+  // do required fields have a value?
+  $: if (totalHomeLoanAmount.value !== "$0.00")
     totalHomeLoanAmount.error = false;
-  }
 
-  $: if (annualInterestRate.value !== "0.00%") {
-    annualInterestRate.error = false;
-  }
+  $: if (annualInterestRate.value !== "0.00%") annualInterestRate.error = false;
 
   function setCalculatedAndCalculate() {
-    if (totalHomeLoanAmount.value === "$0.00") {
-      totalHomeLoanAmount.error = true;
-    }
+    if (totalHomeLoanAmount.value === "$0.00") totalHomeLoanAmount.error = true;
 
-    if (annualInterestRate.value === "0.00%") {
-      annualInterestRate.error = true;
-    }
+    if (annualInterestRate.value === "0.00%") annualInterestRate.error = true;
 
     if (
       totalHomeLoanAmount.value === "$0.00" ||
@@ -83,13 +56,11 @@
 
     calculated = true;
 
-    const calculatedPayment = calculateMortgagePayment(
+    payment = calculateMortgagePayment(
       totalHomeLoanAmount.value,
       annualInterestRate.value,
       termOfTheLoan.value
     );
-
-    payment = calculatedPayment;
   }
 </script>
 
@@ -102,9 +73,9 @@
   </div>
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-4">
-      <div class="flex w-2/3">
-        <div class="mr-16">
-          <label class="block" for="totalHomeLoanAmount">
+      <div class="flex w-4/5">
+        <div class="calculator-field mr-16">
+          <label for="totalHomeLoanAmount" class="block">
             Total Home Loan Amount
           </label>
           <input
@@ -122,8 +93,8 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="mr-16">
-          <label class="block" for="annualInterestRate">
+        <div class="calculator-field mr-16">
+          <label for="annualInterestRate" class="block">
             Annual Interest Rate
           </label>
           <input
@@ -142,7 +113,7 @@
           {/if}
         </div>
         <div>
-          <label class="block" for="termOfTheLoan">Term of the Loan</label>
+          <label for="termOfTheLoan" class="block">Term of the Loan</label>
           <select
             id="termOfTheLoan"
             name="termOfTheLoan"
@@ -162,7 +133,7 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        w-2/3">
+        w-4/5">
         <div class="btn-outer border-red-button">
           <input
             type="submit"

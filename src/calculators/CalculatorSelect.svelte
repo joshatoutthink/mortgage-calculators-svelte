@@ -41,7 +41,8 @@
     </div>
     <div
       class="calculator-select-item flex flex-col items-center self-start py-10
-      w-1/4 cursor-pointer">
+      w-1/4 cursor-pointer"
+      on:click={() => setActiveCalculator('AffordabilityCalculator')}>
       <div class="h-40">
         <AffordabilityCalculatorIconGray />
       </div>
@@ -51,7 +52,8 @@
     </div>
     <div
       class="calculator-select-item flex flex-col items-center border-l
-      border-gray-500 py-10 w-1/4 cursor-pointer">
+      border-gray-500 py-10 w-1/4 cursor-pointer"
+      on:click={() => setActiveCalculator('RefinanceSavingsCalculator')}>
       <div class="h-40">
         <RefinanceSavingsCalculatorIconGray />
       </div>

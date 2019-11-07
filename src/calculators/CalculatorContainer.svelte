@@ -1,11 +1,18 @@
 <script>
+  import AffordabilityCalculator from "./affordabilityCalculator/AffordabilityCalculator.svelte";
   import CalculatorSelect from "./CalculatorSelect.svelte";
   import IncomeRequiredCalculator from "./incomeRequiredCalculator/IncomeRequiredCalculator.svelte";
   import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
+  import RefinanceSavingsCalculator from "./refinanceSavingsCalculator/RefinanceSavingsCalculator.svelte";
 
-  let activeCalculator = MortgagePaymentCalculator;
+  let activeCalculator = RefinanceSavingsCalculator;
 
-  let calculators = { MortgagePaymentCalculator, IncomeRequiredCalculator };
+  let calculators = {
+    AffordabilityCalculator,
+    IncomeRequiredCalculator,
+    MortgagePaymentCalculator,
+    RefinanceSavingsCalculator
+  };
 
   function setActiveCalculator(calculator) {
     activeCalculator = calculators[calculator];
