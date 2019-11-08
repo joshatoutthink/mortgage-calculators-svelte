@@ -22,7 +22,7 @@
 <section aria-label="Mortgage Calculators" class="flex justify-center">
   <div class="container">
     <CalculatorSelect {setActiveCalculator} />
-    <div class="border border-gray">
+    <div class="lg:border lg:border-gray">
       <svelte:component this={activeCalculator} />
     </div>
   </div>

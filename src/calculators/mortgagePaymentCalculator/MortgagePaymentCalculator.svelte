@@ -10,7 +10,7 @@
 
   // fields
   let totalHomeLoanAmount = {
-    value: "300000000",
+    value: "30000000",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -74,9 +74,9 @@
     title="Mortgage Payment Calculator"
     subtitle="Estimate Your Monthly Mortgage Payment" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
-    <div class="bg-gray-custom px-16 py-4">
-      <div class="flex flex-col lg:flex-row lg:w-4/5">
-        <div class="calculator-field mr-16">
+    <div class="bg-gray-custom px-16 py-8">
+      <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
+        <div class="calculator-field lg:mr-16">
           <label for="totalHomeLoanAmount" class="block">
             Total Home Loan Amount
           </label>
@@ -95,7 +95,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="annualInterestRate" class="block">
             Annual Interest Rate
           </label>
@@ -135,7 +135,7 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        w-4/5">
+        lg:w-4/5">
         <div class="btn-outer border-red-button">
           <input
             type="submit"
@@ -148,29 +148,38 @@
 
   <div class="mt-10">
     {#if calculated}
-      <h3 class="text-4xl px-16">Loan Summary</h3>
+      <h3 class="text-4xl text-center px-16 lg:text-left">Loan Summary</h3>
       <div class="bg-gray-custom mt-10 py-4">
         <div
           class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
-          <div class="lg:w-1/3">
-            <p class="text-4xl">Monthly Principal & Interest Payment</p>
+          <div class="mb-8 lg:mb-0 lg:w-1/3">
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Monthly Principal & Interest Payment
+            </p>
             <p class="text-3xl font-light py-4">${payment}</p>
-            <p class="text-2xl font-light">
+            <p class="text-2xl text-center font-light lg:text-left">
               (Insurance and taxes not included)
             </p>
           </div>
           <div class="lg:w-1/3">
-            <p class="text-4xl">Loan Amount</p>
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Loan Amount
+            </p>
             <p class="text-3xl font-light py-4">{totalHomeLoanAmount.value}</p>
           </div>
         </div>
-        <div class="flex justify-between px-16 py-8 w-4/5">
-          <div class="lg:w-1/3">
-            <p class="text-4xl">Interest Rate</p>
+        <div
+          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
+          <div class="mb-8 lg:mb-0 lg:w-1/3">
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Interest Rate
+            </p>
             <p class="text-3xl font-light py-4">{annualInterestRate.value}</p>
           </div>
           <div class="lg:w-1/3">
-            <p class="text-4xl">Term of the Loan</p>
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Term of the Loan
+            </p>
             <p class="text-3xl font-light py-4">{termOfTheLoan.value} years</p>
           </div>
         </div>
@@ -188,20 +197,28 @@
       </div>
       {#if showAmortizationSchedule}
         <div class="px-16 pt-10 pb-4">
-          <h3 class="text-4xl">Amortization Schedule</h3>
-          <div class="mt-10 w-4/5 overflow-y-scroll" style="max-height: 500px;">
+          <h3 class="text-4xl text-center lg:text-left">
+            Amortization Schedule
+          </h3>
+          <div
+            class="mt-10 overflow-y-scroll lg:w-4/5"
+            style="max-height: 500px;">
             <table class="w-full">
               <thead>
                 <tr class="text-white text-3xl">
-                  <th class="bg-blue-500 py-4 sticky top-0">Year</th>
-                  <th class="bg-blue-500 py-4 sticky top-0">Month</th>
-                  <th class="bg-blue-500 py-4 sticky top-0">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">Year</th>
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                    Month
+                  </th>
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
                     Interest Payment
                   </th>
-                  <th class="bg-blue-500 py-4 sticky top-0">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
                     Principal Payment
                   </th>
-                  <th class="bg-blue-500 py-4 sticky top-0">Loan Balance</th>
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                    Loan Balance
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -209,11 +226,13 @@
                   {#if i !== 0}
                     <tr
                       class="text-center text-3xl {i % 2 === 0 ? 'bg-gray-300' : null}">
-                      <td class="py-4">{payment.year}</td>
-                      <td class="py-4">{payment.month}</td>
-                      <td class="py-4">${payment.interest}</td>
-                      <td class="py-4">${payment.principal}</td>
-                      <td class="py-4">${payment.currentBalance}</td>
+                      <td class="p-4 lg:p-0 lg:py-4">{payment.year}</td>
+                      <td class="p-4 lg:p-0 lg:py-4">{payment.month}</td>
+                      <td class="p-4 lg:p-0 lg:py-4">${payment.interest}</td>
+                      <td class="p-4 lg:p-0 lg:py-4">${payment.principal}</td>
+                      <td class="p-4 lg:p-0 lg:py-4">
+                        ${payment.currentBalance}
+                      </td>
                     </tr>
                   {/if}
                 {/each}

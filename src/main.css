@@ -22,7 +22,7 @@ select {
   @apply px-4;
 
   height: 35px;
-  width: 240px;
+  width: 100%;
 
   border: 1px solid #ccc;
 }
@@ -76,6 +76,13 @@ select {
 
   .btn-outer:hover > .btn {
     @apply px-4 py-8;
+  }
+}
+
+@media (min-width: 1024px) {
+  input[type='text'],
+  select {
+    width: 240px;
   }
 }
 

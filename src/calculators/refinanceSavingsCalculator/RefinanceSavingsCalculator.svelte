@@ -126,9 +126,11 @@
 </script>
 
 <div>
-<CalculatorHeader title="Refinance Savings Calculator" subtitle="Calculate How Much You Will Save By Refinancing" />
+  <CalculatorHeader
+    title="Refinance Savings Calculator"
+    subtitle="Calculate How Much You Will Save By Refinancing" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
-    <div class="bg-gray-custom px-16 py-4">
+    <div class="bg-gray-custom px-16 py-8">
       <div class="flex flex-wrap w-4/5">
         <div class="calculator-field mr-16">
           <label for="originalInterestRate" class="block">

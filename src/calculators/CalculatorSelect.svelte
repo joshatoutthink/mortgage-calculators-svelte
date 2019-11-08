@@ -11,7 +11,8 @@
   <h2 class="text-black text-5xl text-center font-medium">
     Select a Calculator
   </h2>
-  <div class="flex flex-wrap items-center justify-between py-8 lg:py-24">
+  <div
+    class="flex flex-wrap items-center justify-between pt-8 lg:pt-0 lg:py-24">
     <div
       class="calculator-select-item flex flex-col items-center border-t border-r
       border-gray-500 py-10 w-1/2 cursor-pointer lg:border-t-0 lg:w-1/4"
