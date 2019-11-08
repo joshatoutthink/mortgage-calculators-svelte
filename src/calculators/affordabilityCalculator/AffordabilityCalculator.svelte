@@ -10,7 +10,7 @@
 
   // fields
   let annualInterestRate = {
-    value: "0",
+    value: "3.5",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
@@ -22,25 +22,25 @@
     errorMessage: "Please select the Term of the Loan"
   };
   let annualRealEstateTaxes = {
-    value: "",
+    value: "100000",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let annualHomeownersInsurance = {
-    value: "",
+    value: "100000",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let grossAnnualIncome = {
-    value: "",
+    value: "5000000",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let monthlyDebtObligations = {
-    value: "",
+    value: "50000",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
@@ -102,8 +102,8 @@
     subtitle="Calculate How Much You Can Borrow" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
-      <div class="flex flex-wrap w-4/5">
-        <div class="calculator-field mr-16">
+      <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
+        <div class="calculator-field lg:mr-16">
           <label for="annualInterestRate" class="block">
             Annual Interest Rate
           </label>
@@ -122,7 +122,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
           <label for="termOfTheLoan" class="block">Term of the Loan</label>
           <select
             name="termOfTheLoan"
@@ -138,7 +138,7 @@
             <option value="5">5 Years</option>
           </select>
         </div>
-        <div>
+        <div class="mb-12 lg:mb-0">
           <label for="annualRealEstateTaxes" class="block">
             Annual Real Estate Taxes
           </label>
@@ -150,7 +150,7 @@
             class="mt-2"
             required />
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
           <label for="annualHomeownersInsurance" class="block">
             Annual Homeowners Insurance
           </label>
@@ -162,7 +162,7 @@
             class="mt-2"
             required />
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="grossAnnualIncome" class="block">
             Gross Annual Income
           </label>
@@ -198,7 +198,7 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        w-4/5">
+        lg:w-4/5">
         <div class="btn-outer border-red-button">
           <input
             type="submit"
@@ -212,15 +212,20 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex justify-between px-16 py-8 w-4/5">
-          <div>
-            <p class="text-4xl">Maximum Monthly Mortgage Payment</p>
+        <div
+          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
+          <div class="mb-8 lg:mb-0">
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Maximum Monthly Mortgage Payment
+            </p>
             <p class="text-3xl font-light py-4">
               ${maximumMonthlyMortgagePayment}
             </p>
           </div>
           <div>
-            <p class="text-4xl">Maximum Loan Amount</p>
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Maximum Loan Amount
+            </p>
             <p class="text-3xl font-light py-4">${maximumLoanAmount}</p>
           </div>
         </div>
