@@ -281,27 +281,33 @@
           lg:text-left lg:font-normal">
           Old Loan
         </p>
-        <div class="bg-gray-custom px-16 lg:w-4/5">
-          <div class="flex flex-col pt-10 pb-16 lg:flex-row lg:items-center">
-            <div class="mb-20 lg:mb-0 lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Monthly Payment
-              </p>
-              <p class="text-3xl font-light">${oldLoanValues.monthlyPayment}</p>
-            </div>
-            <div class="mb-20 lg:mb-0 lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Remaining Loan Balance
-              </p>
-              <p class="text-3xl font-light">
-                ${oldLoanValues.remainingBalance}
-              </p>
-            </div>
-            <div class="lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Remaining Total Cost
-              </p>
-              <p class="text-3xl font-light">${oldLoanValues.remainingTotal}</p>
+        <div class="bg-gray-custom px-16">
+          <div class="lg:w-4/5">
+            <div class="flex flex-col pt-10 pb-16 lg:flex-row lg:items-center">
+              <div class="mb-20 lg:mb-0 lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Monthly Payment
+                </p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.monthlyPayment}
+                </p>
+              </div>
+              <div class="mb-20 lg:mb-0 lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Remaining Loan Balance
+                </p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.remainingBalance}
+                </p>
+              </div>
+              <div class="lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Remaining Total Cost
+                </p>
+                <p class="text-3xl font-light">
+                  ${oldLoanValues.remainingTotal}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -311,32 +317,36 @@
           lg:text-left lg:font-normal">
           New Loan
         </p>
-        <div class="bg-gray-custom px-16 pb-8 lg:w-4/5">
-          <div class="flex flex-col pt-10 pb-8 lg:flex-row lg:items-center">
-            <div class="mb-20 lg:mb-0 lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Monthly Payment
-              </p>
-              <p class="text-3xl font-light">${newLoanValues.monthlyPayment}</p>
+        <div class="bg-gray-custom px-16 pb-8">
+          <div class="lg:w-4/5">
+            <div class="flex flex-col pt-10 pb-8 lg:flex-row lg:items-center">
+              <div class="mb-20 lg:mb-0 lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Monthly Payment
+                </p>
+                <p class="text-3xl font-light">
+                  ${newLoanValues.monthlyPayment}
+                </p>
+              </div>
+              <div class="mb-20 lg:mb-0 lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Monthly Savings
+                </p>
+                <p class="text-3xl font-light">
+                  ${newLoanValues.monthlySavings}
+                </p>
+              </div>
+              <div class="lg:w-1/3">
+                <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                  Remaining Total Cost
+                </p>
+                <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
+              </div>
             </div>
-            <div class="mb-20 lg:mb-0 lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Monthly Savings
-              </p>
-              <p class="text-3xl font-light">${newLoanValues.monthlySavings}</p>
+            <div class="text-center pt-8">
+              <p class="text-3xl text-center lg:text-4xl">Total Savings</p>
+              <p class="text-3xl font-light">${totalSavings}</p>
             </div>
-            <div class="lg:w-1/3">
-              <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                Remaining Total Cost
-              </p>
-              <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
-            </div>
-          </div>
-          <div class="text-center pt-8">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Total Savings
-            </p>
-            <p class="text-3xl font-light">${totalSavings}</p>
           </div>
         </div>
         <div class="px-16">

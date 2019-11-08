@@ -102,7 +102,9 @@
     subtitle="Calculate How Much You Can Borrow" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
-      <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
+      <div
+        class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
+        lg:w-4/5">
         <div class="calculator-field lg:mr-16">
           <label for="annualInterestRate" class="block">
             Annual Interest Rate
