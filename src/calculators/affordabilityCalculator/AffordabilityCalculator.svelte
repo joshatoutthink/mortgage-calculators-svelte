@@ -3,6 +3,8 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate payment function
   import calculateAffordability from "./calculateAffordability";
+  // import disclaimer component
+  import Disclaimer from "../Disclaimer.svelte";
 
   // fields
   let annualInterestRate = {
@@ -211,17 +213,20 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex px-16 py-8 w-4/5">
-          <div class="w-1/3">
-            <p class="text-3xl">Maximum Monthly Mortgage Payment</p>
+        <div class="flex justify-between px-16 py-8 w-4/5">
+          <div>
+            <p class="text-4xl">Maximum Monthly Mortgage Payment</p>
             <p class="text-3xl font-light py-4">
               ${maximumMonthlyMortgagePayment}
             </p>
           </div>
-          <div class="w-1/3">
-            <p class="text-3xl">Maximum Loan Amount</p>
+          <div>
+            <p class="text-4xl">Maximum Loan Amount</p>
             <p class="text-3xl font-light py-4">${maximumLoanAmount}</p>
           </div>
+        </div>
+        <div class="px-16">
+          <Disclaimer />
         </div>
       </div>
     {/if}

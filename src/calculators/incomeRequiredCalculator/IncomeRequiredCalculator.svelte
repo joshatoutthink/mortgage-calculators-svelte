@@ -3,35 +3,32 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate income required function
   import calculateIncomeRequired from "./calculateIncomeRequired";
+  // import disclaimer component
+  import Disclaimer from "../Disclaimer.svelte";
 
   // fields
   let totalHomeLoanAmount = {
     value: "",
-    touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
     value: "0",
-    touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let termOfTheLoan = {
     value: "30",
-    touched: false,
     error: false,
     errorMessage: "Please select the Term of the Loan"
   };
   let annualRealEstateTaxes = {
     value: "",
-    touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
   let monthlyDebtObligations = {
     value: "",
-    touched: false,
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -189,8 +186,9 @@
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
         <div class="px-16 py-8 w-4/5">
-          <p class="text-3xl">Required Salary</p>
+          <p class="text-4xl">Required Salary</p>
           <p class="text-3xl font-light py-4">${requiredSalary}</p>
+          <Disclaimer />
         </div>
       </div>
     {/if}

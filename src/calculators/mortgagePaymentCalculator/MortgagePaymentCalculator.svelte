@@ -3,24 +3,22 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate payment function
   import calculateMortgagePayment from "./calculateMortgagePayment";
+  // import disclaimer component
+  import Disclaimer from "../Disclaimer.svelte";
 
   // fields
   let totalHomeLoanAmount = {
-    value: "30000000",
-    touched: false,
+    value: "",
     error: false,
-
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
-    value: "3.50",
-    touched: false,
+    value: "0",
     error: false,
     errorMessage: "Please enter a value"
   };
   let termOfTheLoan = {
     value: "30",
-    touched: false,
     error: false,
     errorMessage: "Please select the Term of the Loan"
   };
@@ -155,24 +153,24 @@
       <div class="bg-gray-custom mt-10 py-4">
         <div class="flex justify-between px-16 py-8 w-4/5">
           <div class="w-1/3">
-            <p class="text-3xl">Monthly Principal & Interest Payment</p>
+            <p class="text-4xl">Monthly Principal & Interest Payment</p>
             <p class="text-3xl font-light py-4">${payment}</p>
             <p class="text-2xl font-light">
               (Insurance and taxes not included)
             </p>
           </div>
           <div class="w-1/3">
-            <p class="text-3xl">Loan Amount</p>
+            <p class="text-4xl">Loan Amount</p>
             <p class="text-3xl font-light py-4">{totalHomeLoanAmount.value}</p>
           </div>
         </div>
         <div class="flex justify-between px-16 py-8 w-4/5">
           <div class="w-1/3">
-            <p class="text-3xl">Interest Rate</p>
+            <p class="text-4xl">Interest Rate</p>
             <p class="text-3xl font-light py-4">{annualInterestRate.value}</p>
           </div>
           <div class="w-1/3">
-            <p class="text-3xl">Term of the Loan</p>
+            <p class="text-4xl">Term of the Loan</p>
             <p class="text-3xl font-light py-4">{termOfTheLoan.value} years</p>
           </div>
         </div>
@@ -185,6 +183,7 @@
           <label for="showAmortizationSchedule">
             Show Amortization Schedule
           </label>
+          <Disclaimer />
         </div>
       </div>
       {#if showAmortizationSchedule}

@@ -4,6 +4,8 @@
 
   // calculate refinance savings function
   import calculateRefinanceSavings from "./calculateRefinanceSavings";
+  // import disclaimer component
+  import Disclaimer from "../Disclaimer.svelte";
 
   // fields
   let originalInterestRate = {
@@ -275,56 +277,50 @@
 
   <div class="mt-10">
     {#if calculated}
-      <div class="bg-gray-custom mt-10 py-4">
-        <div class="px-16 py-8 w-4/5">
-          <div>
-            <p class="text-4xl text-center">Old Loan</p>
-            <div class="flex items-center pt-10 pb-16">
-              <div class="w-1/3">
-                <p class="text-3xl">Monthly Payment</p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.monthlyPayment}
-                </p>
-              </div>
-              <div class="w-1/3">
-                <p class="text-3xl">Remaining Loan Balance</p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.remainingBalance}
-                </p>
-              </div>
-              <div class="w-1/3">
-                <p class="text-3xl">Remaining Total Cost</p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.remainingTotal}
-                </p>
-              </div>
+      <div class="mt-10 py-12">
+        <p class="text-5xl px-16">Old Loan</p>
+        <div class="bg-gray-custom px-16 w-4/5">
+          <div class="flex items-center pt-10 pb-16">
+            <div class="w-1/3">
+              <p class="text-4xl">Monthly Payment</p>
+              <p class="text-3xl font-light">${oldLoanValues.monthlyPayment}</p>
+            </div>
+            <div class="w-1/3">
+              <p class="text-4xl">Remaining Loan Balance</p>
+              <p class="text-3xl font-light">
+                ${oldLoanValues.remainingBalance}
+              </p>
+            </div>
+            <div class="w-1/3">
+              <p class="text-4xl">Remaining Total Cost</p>
+              <p class="text-3xl font-light">${oldLoanValues.remainingTotal}</p>
             </div>
           </div>
-          <div>
-            <p class="text-4xl text-center">New Loan</p>
-            <div class="flex items-center pt-10 pb-16">
-              <div class="w-1/3">
-                <p class="text-3xl">Monthly Payment</p>
-                <p class="text-3xl font-light">
-                  ${newLoanValues.monthlyPayment}
-                </p>
-              </div>
-              <div class="w-1/3">
-                <p class="text-3xl">Monthly Savings</p>
-                <p class="text-3xl font-light">
-                  ${newLoanValues.monthlySavings}
-                </p>
-              </div>
-              <div class="w-1/3">
-                <p class="text-3xl">Remaining Total Cost</p>
-                <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
-              </div>
+        </div>
+
+        <p class="text-5xl px-16 pt-8">New Loan</p>
+        <div class="bg-gray-custom px-16 pb-8 w-4/5">
+          <div class="flex items-center pt-10 pb-8">
+            <div class="w-1/3">
+              <p class="text-4xl">Monthly Payment</p>
+              <p class="text-3xl font-light">${newLoanValues.monthlyPayment}</p>
+            </div>
+            <div class="w-1/3">
+              <p class="text-4xl">Monthly Savings</p>
+              <p class="text-3xl font-light">${newLoanValues.monthlySavings}</p>
+            </div>
+            <div class="w-1/3">
+              <p class="text-4xl">Remaining Total Cost</p>
+              <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
             </div>
           </div>
-          <div class="text-center">
-            <p class="text-3xl">Total Savings</p>
+          <div class="text-center pt-8">
+            <p class="text-4xl">Total Savings</p>
             <p class="text-3xl font-light">${totalSavings}</p>
           </div>
+        </div>
+        <div class="px-16">
+          <Disclaimer />
         </div>
       </div>
     {/if}
