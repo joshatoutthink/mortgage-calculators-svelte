@@ -6,14 +6,14 @@
 
   // fields
   let totalHomeLoanAmount = {
-    value: "",
+    value: "30000000",
     touched: false,
     error: false,
 
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
-    value: "0",
+    value: "3.50",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"

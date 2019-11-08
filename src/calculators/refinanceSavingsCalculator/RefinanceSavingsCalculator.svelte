@@ -7,12 +7,12 @@
 
   // fields
   let originalInterestRate = {
-    value: "3.50",
+    value: "0",
     error: false,
     errorMessage: "Please enter a value"
   };
   let originalLoanAmount = {
-    value: "30000000",
+    value: "",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -22,22 +22,22 @@
     errorMessage: "Please select a loan term"
   };
   let timeLeftToPayOnOriginalLoan = {
-    value: "120",
+    value: "",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newInterestRate = {
-    value: "3.25",
+    value: "0",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newLoanAmount = {
-    value: "10000000",
+    value: "",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newLoanTerm = {
-    value: "20",
+    value: "30",
     error: false,
     errorMessage: "Please select a loan term"
   };
