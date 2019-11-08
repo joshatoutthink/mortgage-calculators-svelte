@@ -10,12 +10,12 @@
 
   // fields
   let totalHomeLoanAmount = {
-    value: "",
+    value: "30000000",
     error: false,
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
-    value: "0",
+    value: "3.50",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -25,12 +25,12 @@
     errorMessage: "Please select the Term of the Loan"
   };
   let annualRealEstateTaxes = {
-    value: "",
+    value: "100000",
     error: false,
     errorMessage: "Please enter a value"
   };
   let monthlyDebtObligations = {
-    value: "",
+    value: "50000",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -84,8 +84,8 @@
     subtitle="Calculate How Much You Need to Earn to Afford Your Dream Home" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
-      <div class="flex flex-wrap w-4/5">
-        <div class="calculator-field mr-16">
+      <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
+        <div class="calculator-field lg:mr-16">
           <label for="totalHomeLoanAmount" class="block">
             Total Home Loan Amount
           </label>
@@ -104,7 +104,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="annualInterestRate" class="block">
             Annual Interest Rate
           </label>
@@ -123,7 +123,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div>
+        <div class="mb-12 lg:mb-0">
           <label for="termOfTheLoan" class="block">Term of the Loan</label>
           <select
             name="termOfTheLoan"
@@ -139,7 +139,7 @@
             <option value="5">5 Years</option>
           </select>
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
           <label for="annualRealEstateTaxes" class="block">
             Annual Real Estate Taxes
           </label>
@@ -151,7 +151,7 @@
             class="mt-2"
             required />
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="monthlyDebtObligations" class="block">
             Monthly Debt Obligations
           </label>
@@ -168,7 +168,7 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        w-4/5">
+        lg:w-4/5">
         <div class="btn-outer border-red-button">
           <input
             type="submit"
@@ -182,8 +182,10 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="px-16 py-8 w-4/5">
-          <p class="text-4xl">Required Salary</p>
+        <div class="px-16 py-8 lg:w-4/5">
+          <p class="text-3xl text-center lg:text-4xl lg:text-left">
+            Required Salary
+          </p>
           <p class="text-3xl font-light py-4">${requiredSalary}</p>
           <Disclaimer />
         </div>
