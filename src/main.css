@@ -17,7 +17,7 @@ option {
   font-size: 1.8rem;
 }
 
-input:not([type='submit']),
+input[type='text'],
 select {
   @apply px-4;
 

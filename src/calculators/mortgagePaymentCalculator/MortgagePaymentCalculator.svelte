@@ -24,9 +24,11 @@
     error: false,
     errorMessage: "Please select the Term of the Loan"
   };
+  let showAmortizationSchedule = false;
 
-  // result value
+  // result values
   let payment = 0;
+  let amortizationSchedule = {};
 
   // has result been calculated?
   let calculated = false;
@@ -56,11 +58,14 @@
 
     calculated = true;
 
-    payment = calculateMortgagePayment(
+    const calculatedMortgagePayment = calculateMortgagePayment(
       totalHomeLoanAmount.value,
       annualInterestRate.value,
       termOfTheLoan.value
     );
+
+    payment = calculatedMortgagePayment[0];
+    amortizationSchedule = calculatedMortgagePayment[1];
   }
 </script>
 
@@ -148,7 +153,7 @@
     {#if calculated}
       <h3 class="text-4xl px-16">Loan Summary</h3>
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex px-16 py-8 w-4/5">
+        <div class="flex justify-between px-16 py-8 w-4/5">
           <div class="w-1/3">
             <p class="text-3xl">Monthly Principal & Interest Payment</p>
             <p class="text-3xl font-light py-4">${payment}</p>
@@ -161,7 +166,7 @@
             <p class="text-3xl font-light py-4">{totalHomeLoanAmount.value}</p>
           </div>
         </div>
-        <div class="flex px-16 py-8">
+        <div class="flex justify-between px-16 py-8 w-4/5">
           <div class="w-1/3">
             <p class="text-3xl">Interest Rate</p>
             <p class="text-3xl font-light py-4">{annualInterestRate.value}</p>
@@ -171,7 +176,53 @@
             <p class="text-3xl font-light py-4">{termOfTheLoan.value} years</p>
           </div>
         </div>
+        <div class="px-16">
+          <input
+            type="checkbox"
+            id="showAmortizationSchedule"
+            name="showAmortizationSchedule"
+            bind:checked={showAmortizationSchedule} />
+          <label for="showAmortizationSchedule">
+            Show Amortization Schedule
+          </label>
+        </div>
       </div>
+      {#if showAmortizationSchedule}
+        <div class="px-16 pt-10 pb-4">
+          <h3 class="text-4xl">Amortization Schedule</h3>
+          <div class="mt-10 w-4/5 overflow-y-scroll" style="max-height: 500px;">
+            <table class="w-full">
+              <thead>
+                <tr class="text-white text-3xl">
+                  <th class="bg-blue-500 py-4 sticky top-0">Year</th>
+                  <th class="bg-blue-500 py-4 sticky top-0">Month</th>
+                  <th class="bg-blue-500 py-4 sticky top-0">
+                    Interest Payment
+                  </th>
+                  <th class="bg-blue-500 py-4 sticky top-0">
+                    Principal Payment
+                  </th>
+                  <th class="bg-blue-500 py-4 sticky top-0">Loan Balance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {#each amortizationSchedule as payment, i}
+                  {#if i !== 0}
+                    <tr
+                      class="text-center text-3xl {i % 2 === 0 ? 'bg-gray-300' : null}">
+                      <td class="py-4">{payment.year}</td>
+                      <td class="py-4">{payment.month}</td>
+                      <td class="py-4">${payment.interest}</td>
+                      <td class="py-4">${payment.principal}</td>
+                      <td class="py-4">${payment.currentBalance}</td>
+                    </tr>
+                  {/if}
+                {/each}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      {/if}
     {/if}
   </div>
 </div>

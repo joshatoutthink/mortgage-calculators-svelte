@@ -7,6 +7,23 @@ function calculateAmortizationSchedule(principal, rate, term) {
   const fixedPayment = principal * (numerator / denominator);
   const initialBalance = parseFloat(principal);
 
+  // easier to have a placeholder here at 0 than mess with modulo formula below
+  const months = [
+    'derp',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   function getTotal(balance, rate, payment) {
     return {
       interest: balance * rate,
@@ -17,51 +34,29 @@ function calculateAmortizationSchedule(principal, rate, term) {
 
   let runningTotal = getTotal(initialBalance, rate, fixedPayment);
 
-  let amortizedPayments = {};
+  let amortizedPayments = [];
   let i = 1;
 
-  while (i < term) {
+  while (i < term + 1) {
+    const { interest, principal, currentBalance } = runningTotal;
+
     amortizedPayments[i] = {};
     amortizedPayments[i].year = Math.ceil(i / 12);
-    amortizedPayments[i].month = i % 12 ? i % 12 : 12;
+    amortizedPayments[i].month = months[i % 12 ? i % 12 : 12];
+
+    amortizedPayments[i] = {
+      ...amortizedPayments[i],
+      principal: formatCurrencyString(principal),
+      interest: formatCurrencyString(interest),
+      currentBalance: formatCurrencyString(currentBalance),
+    };
+
+    runningTotal = getTotal(currentBalance, rate, fixedPayment);
 
     i++;
   }
 
-  console.log(amortizedPayments);
-
-  // const amortizedPayments = {};
-  // let totals = { interest: 0, principal: 0, balance: 0 };
-
-  // for (let i = 1; i <= term; i++) {
-  //   amortizedPayments[i] = {};
-  //   amortizedPayments[i].year = Math.ceil(i / 12);
-  //   amortizedPayments[i].month = i % 12 ? i % 12 : 12;
-  //   amortizedPayments[i].interest = principal * rate;
-  //   amortizedPayments[i].principal = payment - balance * rate;
-  //   amortizedPayments[i].balance = balance - payment + balance * rate;
-
-  //   if (i === 1) {
-  //     totals.balance = amortizedPayments[i].balance;
-  //     totals.interest = amortizedPayments[i].interest;
-  //     totals.principal = amortizedPayments[i].principal;
-  //   } else {
-  //     totals.balance = amortizedPayments[i].balance;
-  //     totals.interest += amortizedPayments[i].interest;
-  //     totals.principal += amortizedPayments[i].principal;
-  //   }
-
-  //   console.log(totals);
-
-  //   if (amortizedPayments[i].month === 12) {
-  //     if (totals.balance < 0) totals.balance = 0;
-
-  //     amortizedPayments[i].totals = totals;
-  //     totals = {};
-  //   }
-  // }
-
-  // return amortizedPayments;
+  return amortizedPayments;
 }
 
 export default calculateAmortizationSchedule;

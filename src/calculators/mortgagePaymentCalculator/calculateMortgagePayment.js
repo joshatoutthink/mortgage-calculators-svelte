@@ -15,7 +15,7 @@ function calculateMortgagePayment(totalHomeLoanAmount, annualInterestRate, termO
 
   const amortizedPayments = calculateAmortizationSchedule(principal, rate, term);
 
-  return payment;
+  return [payment, amortizedPayments];
 }
 
 export default calculateMortgagePayment;
