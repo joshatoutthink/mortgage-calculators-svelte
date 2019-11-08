@@ -10,7 +10,7 @@
 
   // fields
   let annualInterestRate = {
-    value: "3.5",
+    value: "3.50",
     touched: false,
     error: false,
     errorMessage: "Please enter a value"
@@ -214,7 +214,7 @@
       <div class="bg-gray-custom mt-10 py-4">
         <div
           class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
-          <div class="mb-8 lg:mb-0">
+          <div class="mb-20 lg:mb-0">
             <p class="text-3xl text-center lg:text-4xl lg:text-left">
               Maximum Monthly Mortgage Payment
             </p>

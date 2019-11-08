@@ -152,7 +152,7 @@
       <div class="bg-gray-custom mt-10 py-4">
         <div
           class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
-          <div class="mb-8 lg:mb-0 lg:w-1/3">
+          <div class="mb-20 lg:mb-0 lg:w-1/3">
             <p class="text-3xl text-center lg:text-4xl lg:text-left">
               Monthly Principal & Interest Payment
             </p>
@@ -170,7 +170,7 @@
         </div>
         <div
           class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
-          <div class="mb-8 lg:mb-0 lg:w-1/3">
+          <div class="mb-20 lg:mb-0 lg:w-1/3">
             <p class="text-3xl text-center lg:text-4xl lg:text-left">
               Interest Rate
             </p>

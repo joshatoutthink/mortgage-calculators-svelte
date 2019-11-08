@@ -5,7 +5,7 @@
   import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
   import RefinanceSavingsCalculator from "./refinanceSavingsCalculator/RefinanceSavingsCalculator.svelte";
 
-  let activeCalculator = AffordabilityCalculator;
+  let activeCalculator = RefinanceSavingsCalculator;
 
   let calculators = {
     AffordabilityCalculator,

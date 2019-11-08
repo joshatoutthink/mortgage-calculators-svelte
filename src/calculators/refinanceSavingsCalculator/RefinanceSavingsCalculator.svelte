@@ -10,12 +10,12 @@
 
   // fields
   let originalInterestRate = {
-    value: "0",
+    value: "3.50",
     error: false,
     errorMessage: "Please enter a value"
   };
   let originalLoanAmount = {
-    value: "",
+    value: "30000000",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -25,17 +25,17 @@
     errorMessage: "Please select a loan term"
   };
   let timeLeftToPayOnOriginalLoan = {
-    value: "",
+    value: "120",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newInterestRate = {
-    value: "0",
+    value: "3.25",
     error: false,
     errorMessage: "Please enter a value"
   };
   let newLoanAmount = {
-    value: "",
+    value: "10000000",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -131,8 +131,10 @@
     subtitle="Calculate How Much You Will Save By Refinancing" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
-      <div class="flex flex-wrap w-4/5">
-        <div class="calculator-field mr-16">
+      <div
+        class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
+        lg:w-4/5">
+        <div class="calculator-field lg:mr-16">
           <label for="originalInterestRate" class="block">
             Original Interest Rate
           </label>
@@ -151,7 +153,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="originalLoanAmount" class="block">
             Original Loan Amount
           </label>
@@ -170,7 +172,7 @@
             <p class="text-2l py-6">&nbsp;</p>
           {/if}
         </div>
-        <div>
+        <div class="mb-20 lg:mb-0">
           <label for="originalLoanTerm" class="block">Original Loan Term</label>
           <select
             name="originalLoanTerm"
@@ -186,7 +188,7 @@
             <option value="5">5 Years</option>
           </select>
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="timeLeftToPayOnOriginalLoan" class="block">
             Time Left to Pay on Original Loan
           </label>
@@ -205,7 +207,7 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="calculator-field mr-16">
+        <div class="calculator-field lg:mr-16">
           <label for="newInterestRate" class="block">New Interest Rate</label>
           <input
             type="text"
@@ -260,7 +262,7 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        w-4/5">
+        lg:w-4/5">
         <div class="btn-outer border-red-button">
           <input
             type="submit"
@@ -274,44 +276,66 @@
   <div class="mt-10">
     {#if calculated}
       <div class="mt-10 py-12">
-        <p class="text-5xl px-16">Old Loan</p>
-        <div class="bg-gray-custom px-16 w-4/5">
-          <div class="flex items-center pt-10 pb-16">
-            <div class="w-1/3">
-              <p class="text-4xl">Monthly Payment</p>
+        <p
+          class="text-4xl text-center font-medium px-16 pb-8 lg:text-5xl
+          lg:text-left lg:font-normal">
+          Old Loan
+        </p>
+        <div class="bg-gray-custom px-16 lg:w-4/5">
+          <div class="flex flex-col pt-10 pb-16 lg:flex-row lg:items-center">
+            <div class="mb-20 lg:mb-0 lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Monthly Payment
+              </p>
               <p class="text-3xl font-light">${oldLoanValues.monthlyPayment}</p>
             </div>
-            <div class="w-1/3">
-              <p class="text-4xl">Remaining Loan Balance</p>
+            <div class="mb-20 lg:mb-0 lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Remaining Loan Balance
+              </p>
               <p class="text-3xl font-light">
                 ${oldLoanValues.remainingBalance}
               </p>
             </div>
-            <div class="w-1/3">
-              <p class="text-4xl">Remaining Total Cost</p>
+            <div class="lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Remaining Total Cost
+              </p>
               <p class="text-3xl font-light">${oldLoanValues.remainingTotal}</p>
             </div>
           </div>
         </div>
 
-        <p class="text-5xl px-16 pt-8">New Loan</p>
-        <div class="bg-gray-custom px-16 pb-8 w-4/5">
-          <div class="flex items-center pt-10 pb-8">
-            <div class="w-1/3">
-              <p class="text-4xl">Monthly Payment</p>
+        <p
+          class="text-4xl text-center font-medium px-16 py-8 lg:text-5xl
+          lg:text-left lg:font-normal">
+          New Loan
+        </p>
+        <div class="bg-gray-custom px-16 pb-8 lg:w-4/5">
+          <div class="flex flex-col pt-10 pb-8 lg:flex-row lg:items-center">
+            <div class="mb-20 lg:mb-0 lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Monthly Payment
+              </p>
               <p class="text-3xl font-light">${newLoanValues.monthlyPayment}</p>
             </div>
-            <div class="w-1/3">
-              <p class="text-4xl">Monthly Savings</p>
+            <div class="mb-20 lg:mb-0 lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Monthly Savings
+              </p>
               <p class="text-3xl font-light">${newLoanValues.monthlySavings}</p>
             </div>
-            <div class="w-1/3">
-              <p class="text-4xl">Remaining Total Cost</p>
+            <div class="lg:w-1/3">
+              <p class="text-3xl text-center lg:text-4xl lg:text-left">
+                Remaining Total Cost
+              </p>
               <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
             </div>
           </div>
           <div class="text-center pt-8">
-            <p class="text-4xl">Total Savings</p>
+            <p class="text-3xl text-center lg:text-4xl lg:text-left">
+              Total Savings
+            </p>
             <p class="text-3xl font-light">${totalSavings}</p>
           </div>
         </div>
