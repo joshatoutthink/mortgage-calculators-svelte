@@ -1,9 +1,10 @@
 <script>
   // import input formatting functions
   import { formatCurrency, formatMonths, formatPercentage } from "../../util";
-
   // calculate refinance savings function
   import calculateRefinanceSavings from "./calculateRefinanceSavings";
+  // import calculator base layout components
+  import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
@@ -125,14 +126,7 @@
 </script>
 
 <div>
-  <div class="px-16 py-8">
-    <h2 class="text-black text-6xl font-medium mb-4">
-      Refinance Savings Calculator
-    </h2>
-    <h3 class="text-black text-4xl">
-      Calculate How Much You Will Save By Refinancing
-    </h3>
-  </div>
+<CalculatorHeader title="Refinance Savings Calculator" subtitle="Calculate How Much You Will Save By Refinancing" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-4">
       <div class="flex flex-wrap w-4/5">

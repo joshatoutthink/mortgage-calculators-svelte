@@ -3,17 +3,19 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate payment function
   import calculateMortgagePayment from "./calculateMortgagePayment";
+  // import calculator base layout components
+  import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
   // fields
   let totalHomeLoanAmount = {
-    value: "",
+    value: "300000000",
     error: false,
     errorMessage: "Please enter a value"
   };
   let annualInterestRate = {
-    value: "0",
+    value: "3.50",
     error: false,
     errorMessage: "Please enter a value"
   };
@@ -68,15 +70,12 @@
 </script>
 
 <div>
-  <div class="px-16 py-8">
-    <h2 class="text-black text-6xl font-medium mb-4">
-      Mortgage Payment Calculator
-    </h2>
-    <h3 class="text-black text-4xl">Estimate Your Monthly Mortgage Payment</h3>
-  </div>
+  <CalculatorHeader
+    title="Mortgage Payment Calculator"
+    subtitle="Estimate Your Monthly Mortgage Payment" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-4">
-      <div class="flex w-4/5">
+      <div class="flex flex-col lg:flex-row lg:w-4/5">
         <div class="calculator-field mr-16">
           <label for="totalHomeLoanAmount" class="block">
             Total Home Loan Amount
@@ -151,25 +150,26 @@
     {#if calculated}
       <h3 class="text-4xl px-16">Loan Summary</h3>
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="flex justify-between px-16 py-8 w-4/5">
-          <div class="w-1/3">
+        <div
+          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
+          <div class="lg:w-1/3">
             <p class="text-4xl">Monthly Principal & Interest Payment</p>
             <p class="text-3xl font-light py-4">${payment}</p>
             <p class="text-2xl font-light">
               (Insurance and taxes not included)
             </p>
           </div>
-          <div class="w-1/3">
+          <div class="lg:w-1/3">
             <p class="text-4xl">Loan Amount</p>
             <p class="text-3xl font-light py-4">{totalHomeLoanAmount.value}</p>
           </div>
         </div>
         <div class="flex justify-between px-16 py-8 w-4/5">
-          <div class="w-1/3">
+          <div class="lg:w-1/3">
             <p class="text-4xl">Interest Rate</p>
             <p class="text-3xl font-light py-4">{annualInterestRate.value}</p>
           </div>
-          <div class="w-1/3">
+          <div class="lg:w-1/3">
             <p class="text-4xl">Term of the Loan</p>
             <p class="text-3xl font-light py-4">{termOfTheLoan.value} years</p>
           </div>

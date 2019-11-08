@@ -3,6 +3,8 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate payment function
   import calculateAffordability from "./calculateAffordability";
+  // import calculator base layout components
+  import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
@@ -95,12 +97,9 @@
 </script>
 
 <div>
-  <div class="px-16 py-8">
-    <h2 class="text-black text-6xl font-medium mb-4">
-      Affordability Calculator
-    </h2>
-    <h3 class="text-black text-4xl">Calculate How Much You Can Borrow</h3>
-  </div>
+  <CalculatorHeader
+    title="Affordability Calculator"
+    subtitle="Calculate How Much You Can Borrow" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-4">
       <div class="flex flex-wrap w-4/5">

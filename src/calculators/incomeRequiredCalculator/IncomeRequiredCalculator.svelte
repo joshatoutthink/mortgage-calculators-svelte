@@ -3,6 +3,8 @@
   import { formatCurrency, formatPercentage } from "../../util";
   // calculate income required function
   import calculateIncomeRequired from "./calculateIncomeRequired";
+  // import calculator base layout components
+  import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
@@ -77,14 +79,9 @@
 </script>
 
 <div>
-  <div class="px-16 py-8">
-    <h2 class="text-black text-6xl font-medium mb-4">
-      Income Required Calculator
-    </h2>
-    <h3 class="text-black text-4xl">
-      Calculate How Much You Need to Earn to Afford Your Dream Home
-    </h3>
-  </div>
+  <CalculatorHeader
+    title="Income Required Calculator"
+    subtitle="Calculate How Much You Need to Earn to Afford Your Dream Home" />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-4">
       <div class="flex flex-wrap w-4/5">
