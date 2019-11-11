@@ -206,17 +206,19 @@
             <table class="w-full">
               <thead>
                 <tr class="text-white text-3xl">
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">Year</th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
+                    Year
+                  </th>
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
                     Month
                   </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
                     Interest Payment
                   </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
                     Principal Payment
                   </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 py-4">
+                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
                     Loan Balance
                   </th>
                 </tr>

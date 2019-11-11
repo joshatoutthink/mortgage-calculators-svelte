@@ -1,5 +1,5 @@
 // import utility functions
-import { deformatCurrency, deformatPercentage, formatCurrencyString } from '../../util';
+import { formatCurrencyString } from '../../util';
 
 function calculateAmortizationSchedule(principal, rate, term) {
   const numerator = rate * Math.pow(1 + rate, term);

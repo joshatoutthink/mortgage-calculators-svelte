@@ -1,6 +1,11 @@
 <script>
   // import input formatting functions
-  import { formatCurrency, formatMonths, formatPercentage } from "../../util";
+  import {
+    formatCurrency,
+    formatMonths,
+    formatPercentage,
+    setCursorPosition
+  } from "../../util";
   // calculate refinance savings function
   import calculateRefinanceSavings from "./calculateRefinanceSavings";
   // import calculator base layout components
@@ -65,9 +70,9 @@
   $: {
     originalInterestRate.value = formatPercentage(originalInterestRate.value);
     originalLoanAmount.value = formatCurrency(originalLoanAmount.value);
-    // timeLeftToPayOnOriginalLoan.value = formatMonths(
-    //   timeLeftToPayOnOriginalLoan.value
-    // );
+    timeLeftToPayOnOriginalLoan.value = formatMonths(
+      timeLeftToPayOnOriginalLoan.value
+    );
     newInterestRate.value = formatPercentage(newInterestRate.value);
     newLoanAmount.value = formatCurrency(newLoanAmount.value);
   }
@@ -197,6 +202,7 @@
             id="timeLeftToPayOnOriginalLoan"
             name="timeLeftToPayOnOriginalLoan"
             bind:value={timeLeftToPayOnOriginalLoan.value}
+            use:setCursorPosition={' Months'}
             class="mt-2"
             required />
           {#if timeLeftToPayOnOriginalLoan.error}

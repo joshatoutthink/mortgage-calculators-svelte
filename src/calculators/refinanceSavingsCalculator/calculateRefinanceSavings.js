@@ -1,8 +1,8 @@
 // import utility functions
-import { deformatCurrency, deformatPercentage, formatCurrencyString } from '../../util';
+import { deformatCurrency, deformatNumber, deformatPercentage, formatCurrencyString } from '../../util';
 
 function calculateOldValues(originalInterestRate, originalLoanAmount, originalLoanTerm, timeLeftToPayOnOriginalLoan) {
-  const monthsLeft = timeLeftToPayOnOriginalLoan;
+  const monthsLeft = deformatNumber(timeLeftToPayOnOriginalLoan);
 
   const originalPrincipal = deformatCurrency(originalLoanAmount);
   const originalRate = deformatPercentage(originalInterestRate) / 12;

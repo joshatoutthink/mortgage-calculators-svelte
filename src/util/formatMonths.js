@@ -1,5 +1,5 @@
 function formatMonths(value) {
-  return `${value} months`;
+  return `${value.replace(' Months', '')} Months`;
 }
 
 export default formatMonths;
