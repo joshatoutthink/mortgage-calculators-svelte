@@ -8,6 +8,9 @@
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
+  // company prop for passing to Disclaimer
+  export let company;
+
   // fields
   let annualInterestRate = {
     value: "3.50",
@@ -232,7 +235,7 @@
           </div>
         </div>
         <div class="px-16">
-          <Disclaimer />
+          <Disclaimer {company} />
         </div>
       </div>
     {/if}

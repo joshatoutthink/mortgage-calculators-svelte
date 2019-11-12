@@ -8,6 +8,9 @@
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
 
+  // company prop for passing to Disclaimer
+  export let company;
+
   // fields
   let totalHomeLoanAmount = {
     value: "30000000",
@@ -184,12 +187,12 @@
   <div class="mt-10">
     {#if calculated}
       <div class="bg-gray-custom mt-10 py-4">
-        <div class="px-16 py-8 lg:w-4/5">
+        <div class="px-16 py-8">
           <p class="text-3xl text-center lg:text-4xl lg:text-left">
             Required Salary
           </p>
           <p class="text-3xl font-light py-4">${requiredSalary}</p>
-          <Disclaimer />
+          <Disclaimer {company} />
         </div>
       </div>
     {/if}
