@@ -1,13 +1,13 @@
 <script>
-  import AffordabilityCalculator from "./affordabilityCalculator/AffordabilityCalculator.svelte";
   import CalculatorSelect from "./CalculatorSelect.svelte";
+  import AffordabilityCalculator from "./affordabilityCalculator/AffordabilityCalculator.svelte";
   import IncomeRequiredCalculator from "./incomeRequiredCalculator/IncomeRequiredCalculator.svelte";
   import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
   import RefinanceSavingsCalculator from "./refinanceSavingsCalculator/RefinanceSavingsCalculator.svelte";
 
   export let company;
-
-  let activeCalculator = RefinanceSavingsCalculator;
+  export let defaultCalculator = "RefinanceSavingsCalculator";
+  export let showTabs = true;
 
   let calculators = {
     AffordabilityCalculator,
@@ -15,7 +15,8 @@
     MortgagePaymentCalculator,
     RefinanceSavingsCalculator,
   };
-
+  let activeCalculator = calculators[defaultCalculator];
+  console.log(activeCalculator, defaultCalculator);
   function setActiveCalculator(calculator) {
     activeCalculator = calculators[calculator];
   }
@@ -23,7 +24,9 @@
 
 <section aria-label="Mortgage Calculators" class="flex justify-center">
   <div class="container">
-    <CalculatorSelect {setActiveCalculator} />
+    {#if showTabs}
+      <CalculatorSelect {setActiveCalculator} />
+    {/if}
     <div class="lg:border lg:border-gray">
       <svelte:component this={activeCalculator} {company} />
     </div>
