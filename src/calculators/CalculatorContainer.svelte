@@ -5,13 +5,15 @@
   import MortgagePaymentCalculator from "./mortgagePaymentCalculator/MortgagePaymentCalculator.svelte";
   import RefinanceSavingsCalculator from "./refinanceSavingsCalculator/RefinanceSavingsCalculator.svelte";
 
+  export let company;
+
   let activeCalculator = RefinanceSavingsCalculator;
 
   let calculators = {
     AffordabilityCalculator,
     IncomeRequiredCalculator,
     MortgagePaymentCalculator,
-    RefinanceSavingsCalculator
+    RefinanceSavingsCalculator,
   };
 
   function setActiveCalculator(calculator) {
@@ -23,7 +25,7 @@
   <div class="container">
     <CalculatorSelect {setActiveCalculator} />
     <div class="lg:border lg:border-gray">
-      <svelte:component this={activeCalculator} />
+      <svelte:component this={activeCalculator} {company} />
     </div>
   </div>
 </section>

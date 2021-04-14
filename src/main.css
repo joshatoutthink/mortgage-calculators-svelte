@@ -35,7 +35,7 @@ select {
 .btn {
   @apply border-b border-transparent text-center text-white font-medium px-2 py-3 cursor-pointer appearance-none;
 
-  background-color: #870f54;
+  background-color: #821c56 ;
 
   transition: padding 0.2s ease-in-out;
 }
@@ -47,7 +47,7 @@ select {
 .btn-outer {
   @apply border-2 border-solid bg-transparent p-2 flex items-center justify-center cursor-pointer;
 
-  border-color: #870f54;
+  border-color: #821c56;
 
   height: 54px;
   width: 275px;
