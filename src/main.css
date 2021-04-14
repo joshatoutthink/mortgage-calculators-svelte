@@ -1,13 +1,13 @@
-@import 'tailwindcss/base';
+@import "tailwindcss/base";
 
-@import 'tailwindcss/components';
+@import "tailwindcss/components";
 
-@import 'tailwindcss/utilities';
+@import "tailwindcss/utilities";
 
-html {
+:root {
   font-size: 10px;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 input,
@@ -17,7 +17,7 @@ option {
   font-size: 1.8rem;
 }
 
-input[type='text'],
+input[type="text"],
 select {
   @apply px-4;
 
@@ -35,7 +35,7 @@ select {
 .btn {
   @apply border-b border-transparent text-center text-white font-medium px-2 py-3 cursor-pointer appearance-none;
 
-  background-color: #821c56 ;
+  background-color: #821c56;
 
   transition: padding 0.2s ease-in-out;
 }
@@ -59,7 +59,7 @@ select {
   @apply p-0;
 }
 
-.btn-outer:hover > .btn {
+. btn-outer:hover > .btn {
   @apply px-2 py-5;
 }
 
@@ -80,7 +80,7 @@ select {
 }
 
 @media (min-width: 1024px) {
-  input[type='text'],
+  input[type="text"],
   select {
     width: 240px;
   }

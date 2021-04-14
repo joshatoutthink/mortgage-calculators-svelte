@@ -8,7 +8,7 @@ function show_mortgage_calculator($atts){
 
   ob_start();
   ?>
-  <div class="insert-calculator-here" data-calc="<?php echo $calc; ?>"></div>
+  <mortgage-calculator data-calc="<?php echo $calc; ?>"></mortgage-calculator>
   <?php
   //AVAILABLE OPTIONS IN CONSOLE SO USER KNOWS THE NAMES OF CALCS
   if( 0 != wp_get_current_user()->ID){

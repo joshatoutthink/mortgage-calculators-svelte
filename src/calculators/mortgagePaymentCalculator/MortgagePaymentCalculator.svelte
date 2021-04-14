@@ -15,17 +15,17 @@
   let totalHomeLoanAmount = {
     value: "30000000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let annualInterestRate = {
     value: "3.50",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let termOfTheLoan = {
     value: "30",
     error: false,
-    errorMessage: "Please select the Term of the Loan"
+    errorMessage: "Please select the Term of the Loan",
   };
   let showAmortizationSchedule = false;
 
@@ -75,7 +75,8 @@
 <div>
   <CalculatorHeader
     title="Mortgage Payment Calculator"
-    subtitle="Estimate Your Monthly Mortgage Payment" />
+    subtitle="Estimate Your Monthly Mortgage Payment"
+  />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
       <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
@@ -89,7 +90,8 @@
             name="totalHomeLoanAmount"
             bind:value={totalHomeLoanAmount.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if totalHomeLoanAmount.error}
             <p class="text-red-500 text-2xl py-6">
               {totalHomeLoanAmount.errorMessage}
@@ -108,7 +110,8 @@
             name="annualInterestRate"
             bind:value={annualInterestRate.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if annualInterestRate.error}
             <p class="text-red-500 text-2xl py-6">
               {annualInterestRate.errorMessage}
@@ -124,7 +127,8 @@
             name="termOfTheLoan"
             bind:value={termOfTheLoan.value}
             class="mt-2"
-            required>
+            required
+          >
             <option value="30" selected>30 Years</option>
             <option value="25">25 Years</option>
             <option value="20">20 Years</option>
@@ -132,18 +136,21 @@
             <option value="10">10 Years</option>
             <option value="5">5 Years</option>
           </select>
+          <p class="text-2xl py-6">&nbsp;</p>
         </div>
       </div>
     </div>
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5">
+        lg:w-4/5"
+      >
         <div class="btn-outer border-red-button">
           <input
             type="submit"
             value="Calculate"
-            class="btn btn-action bg-red-button w-full" />
+            class="btn btn-action bg-red-button w-full"
+          />
         </div>
       </div>
     </div>
@@ -154,7 +161,8 @@
       <h3 class="text-4xl text-center px-16 lg:text-left">Loan Summary</h3>
       <div class="bg-gray-custom mt-10 py-4">
         <div
-          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
+          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5"
+        >
           <div class="mb-20 lg:mb-0 lg:w-1/3">
             <p class="text-3xl text-center lg:text-4xl lg:text-left">
               Monthly Principal & Interest Payment
@@ -172,7 +180,8 @@
           </div>
         </div>
         <div
-          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5">
+          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5"
+        >
           <div class="mb-20 lg:mb-0 lg:w-1/3">
             <p class="text-3xl text-center lg:text-4xl lg:text-left">
               Interest Rate
@@ -191,7 +200,8 @@
             type="checkbox"
             id="showAmortizationSchedule"
             name="showAmortizationSchedule"
-            bind:checked={showAmortizationSchedule} />
+            bind:checked={showAmortizationSchedule}
+          />
           <label for="showAmortizationSchedule">
             Show Amortization Schedule
           </label>
@@ -205,7 +215,8 @@
           </h3>
           <div
             class="mt-10 overflow-y-scroll lg:w-4/5"
-            style="max-height: 500px;">
+            style="max-height: 500px;"
+          >
             <table class="w-full">
               <thead>
                 <tr class="text-white text-3xl">
@@ -230,7 +241,10 @@
                 {#each amortizationSchedule as payment, i}
                   {#if i !== 0}
                     <tr
-                      class="text-center text-3xl {i % 2 === 0 ? 'bg-gray-300' : null}">
+                      class="text-center text-3xl {i % 2 === 0
+                        ? 'bg-gray-300'
+                        : null}"
+                    >
                       <td class="p-4 lg:p-0 lg:py-4">{payment.year}</td>
                       <td class="p-4 lg:p-0 lg:py-4">{payment.month}</td>
                       <td class="p-4 lg:p-0 lg:py-4">${payment.interest}</td>

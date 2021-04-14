@@ -1,22 +1,35 @@
 import CalculatorContainer from "./calculators/CalculatorContainer.svelte";
 import "./main.css";
 
-window.addEventListener("DOMContentLoaded", () => {
-  const targetElements = document.querySelectorAll(".insert-calculator-here");
-  console.log(targetElements);
-  targetElements.forEach((targetElement) => {
-    const defaultCalc = targetElement.dataset.calc;
+const mortgageCalcTemplate = `
+  <style>
+    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/bundle.css?ver=all"
+  </style>
+
+`;
+
+class MortgageCalcElement extends HTMLElement {
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = mortgageCalcTemplate;
+  }
+
+  connectedCallback() {
+    const defaultCalc = this.getAttribute("data-calc");
     const props = {
-      company: "Tabor Mortgage Group",
-      showTabs: !Boolean(defaultCalc), // Only show tabs if no calculator is set as the default
+      company: "some company",
+      showTabs: !Boolean(defaultCalc),
     };
     if (defaultCalc) {
       props.defaultCalc = defaultCalc;
     }
 
     new CalculatorContainer({
-      target: targetElement,
+      target: this.shadowRoot,
       props,
     });
-  });
-});
+  }
+}
+
+window.customElements.define("mortgage-calculator", MortgageCalcElement);

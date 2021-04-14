@@ -15,27 +15,27 @@
   let totalHomeLoanAmount = {
     value: "30000000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let annualInterestRate = {
     value: "3.50",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let termOfTheLoan = {
     value: "30",
     error: false,
-    errorMessage: "Please select the Term of the Loan"
+    errorMessage: "Please select the Term of the Loan",
   };
   let annualRealEstateTaxes = {
     value: "100000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let monthlyDebtObligations = {
     value: "50000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
 
   // result value
@@ -84,12 +84,14 @@
 <div>
   <CalculatorHeader
     title="Income Required Calculator"
-    subtitle="Calculate How Much You Need to Earn to Afford Your Dream Home" />
+    subtitle="Calculate How Much You Need to Earn to Afford Your Dream Home"
+  />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
       <div
         class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
-        lg:w-4/5">
+        lg:w-4/5"
+      >
         <div class="calculator-field lg:mr-16">
           <label for="totalHomeLoanAmount" class="block">
             Total Home Loan Amount
@@ -100,7 +102,8 @@
             name="totalHomeLoanAmount"
             bind:value={totalHomeLoanAmount.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if totalHomeLoanAmount.error}
             <p class="text-red-500 text-2xl py-6">
               {totalHomeLoanAmount.errorMessage}
@@ -119,7 +122,8 @@
             name="annualInterestRate"
             bind:value={annualInterestRate.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if annualInterestRate.error}
             <p class="text-red-500 text-2xl py-6">
               {annualInterestRate.errorMessage}
@@ -128,14 +132,15 @@
             <p class="text-2xl py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="mb-12 lg:mb-0">
+        <div class="calculator-field lg:mr-16 mb-12 lg:mb-0">
           <label for="termOfTheLoan" class="block">Term of the Loan</label>
           <select
             name="termOfTheLoan"
             id="termOfTheLoan"
             bind:value={termOfTheLoan.value}
             class="mt-2"
-            required>
+            required
+          >
             <option value="30" selected>30 Years</option>
             <option value="25">25 Years</option>
             <option value="20">20 Years</option>
@@ -143,6 +148,7 @@
             <option value="10">10 Years</option>
             <option value="5">5 Years</option>
           </select>
+          <p class="text-2xl py-6">&nbsp;</p>
         </div>
         <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
           <label for="annualRealEstateTaxes" class="block">
@@ -154,7 +160,8 @@
             name="annualRealEstateTaxes"
             bind:value={annualRealEstateTaxes.value}
             class="mt-2"
-            required />
+            required
+          />
         </div>
         <div class="calculator-field lg:mr-16">
           <label for="monthlyDebtObligations" class="block">
@@ -166,19 +173,22 @@
             name="monthlyDebtObligations"
             bind:value={monthlyDebtObligations.value}
             class="mt-2"
-            required />
+            required
+          />
         </div>
       </div>
     </div>
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5">
+        lg:w-4/5"
+      >
         <div class="btn-outer border-red-button">
           <input
             type="submit"
             value="Calculate"
-            class="btn btn-action bg-red-button w-full" />
+            class="btn btn-action bg-red-button w-full"
+          />
         </div>
       </div>
     </div>

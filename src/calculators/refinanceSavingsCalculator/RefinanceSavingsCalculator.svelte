@@ -4,7 +4,7 @@
     formatCurrency,
     formatMonths,
     formatPercentage,
-    setCursorPosition
+    setCursorPosition,
   } from "../../util";
   // calculate refinance savings function
   import calculateRefinanceSavings from "./calculateRefinanceSavings";
@@ -20,49 +20,49 @@
   let originalInterestRate = {
     value: "3.50",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let originalLoanAmount = {
     value: "30000000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let originalLoanTerm = {
     value: "30",
     error: false,
-    errorMessage: "Please select a loan term"
+    errorMessage: "Please select a loan term",
   };
   let timeLeftToPayOnOriginalLoan = {
     value: "120",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let newInterestRate = {
     value: "3.25",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let newLoanAmount = {
     value: "10000000",
     error: false,
-    errorMessage: "Please enter a value"
+    errorMessage: "Please enter a value",
   };
   let newLoanTerm = {
     value: "30",
     error: false,
-    errorMessage: "Please select a loan term"
+    errorMessage: "Please select a loan term",
   };
 
   // result values
   let oldLoanValues = {
     monthlyPayment: "",
     remainingLoanBalance: "",
-    remainingTotalCost: ""
+    remainingTotalCost: "",
   };
   let newLoanValues = {
     monthlyPayment: "",
     monthlySavings: "",
-    totalCost: ""
+    totalCost: "",
   };
   let totalSavings = "";
 
@@ -136,12 +136,14 @@
 <div>
   <CalculatorHeader
     title="Refinance Savings Calculator"
-    subtitle="Calculate How Much You Will Save By Refinancing" />
+    subtitle="Calculate How Much You Will Save By Refinancing"
+  />
   <form on:submit|preventDefault={setCalculatedAndCalculate}>
     <div class="bg-gray-custom px-16 py-8">
       <div
         class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
-        lg:w-4/5">
+        lg:w-4/5"
+      >
         <div class="calculator-field lg:mr-16">
           <label for="originalInterestRate" class="block">
             Original Interest Rate
@@ -152,7 +154,8 @@
             name="originalInterestRate"
             bind:value={originalInterestRate.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if originalInterestRate.error}
             <p class="text-red-500 text-2xl py-6">
               {originalInterestRate.errorMessage}
@@ -171,7 +174,8 @@
             name="originalLoanAmount"
             bind:value={originalLoanAmount.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if originalLoanAmount.error}
             <p class="text-red-500 text-2xl py-6">
               {originalLoanAmount.errorMessage}
@@ -180,14 +184,15 @@
             <p class="text-2l py-6">&nbsp;</p>
           {/if}
         </div>
-        <div class="mb-20 lg:mb-0">
+        <div class="calculator-field mb-20 lg:mr-16 lg:mb-0">
           <label for="originalLoanTerm" class="block">Original Loan Term</label>
           <select
             name="originalLoanTerm"
             id="originalLoanTerm"
             bind:value={originalLoanTerm.value}
             class="mt-2"
-            required>
+            required
+          >
             <option value="30" selected>30 Years</option>
             <option value="25">25 Years</option>
             <option value="20">20 Years</option>
@@ -195,6 +200,7 @@
             <option value="10">10 Years</option>
             <option value="5">5 Years</option>
           </select>
+          <p class="text-2xl py-6">&nbsp;</p>
         </div>
         <div class="calculator-field lg:mr-16">
           <label for="timeLeftToPayOnOriginalLoan" class="block">
@@ -205,9 +211,10 @@
             id="timeLeftToPayOnOriginalLoan"
             name="timeLeftToPayOnOriginalLoan"
             bind:value={timeLeftToPayOnOriginalLoan.value}
-            use:setCursorPosition={' Months'}
+            use:setCursorPosition={" Months"}
             class="mt-2"
-            required />
+            required
+          />
           {#if timeLeftToPayOnOriginalLoan.error}
             <p class="text-red-500 text-2xl py-6">
               {timeLeftToPayOnOriginalLoan.errorMessage}
@@ -224,7 +231,8 @@
             name="newInterestRate"
             bind:value={newInterestRate.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if newInterestRate.error}
             <p class="text-red-500 text-2xl py-6">
               {newInterestRate.errorMessage}
@@ -241,7 +249,8 @@
             name="newLoanAmount"
             bind:value={newLoanAmount.value}
             class="mt-2"
-            required />
+            required
+          />
           {#if newLoanAmount.error}
             <p class="text-red-500 text-2xl py-6">
               {newLoanAmount.errorMessage}
@@ -257,7 +266,8 @@
             id="newLoanTerm"
             bind:value={newLoanTerm.value}
             class="mt-2"
-            required>
+            required
+          >
             <option value="30" selected>30 Years</option>
             <option value="25">25 Years</option>
             <option value="20">20 Years</option>
@@ -271,12 +281,14 @@
     <div class="px-16">
       <div
         class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5">
+        lg:w-4/5"
+      >
         <div class="btn-outer border-red-button">
           <input
             type="submit"
             value="Calculate"
-            class="btn btn-action bg-red-button w-full" />
+            class="btn btn-action bg-red-button w-full"
+          />
         </div>
       </div>
     </div>
@@ -287,7 +299,8 @@
       <div class="mt-10 py-12">
         <p
           class="text-4xl text-center font-medium px-16 pb-8 lg:text-5xl
-          lg:text-left lg:font-normal">
+          lg:text-left lg:font-normal"
+        >
           Old Loan
         </p>
         <div class="bg-gray-custom px-16">
@@ -323,7 +336,8 @@
 
         <p
           class="text-4xl text-center font-medium px-16 py-8 lg:text-5xl
-          lg:text-left lg:font-normal">
+          lg:text-left lg:font-normal"
+        >
           New Loan
         </p>
         <div class="bg-gray-custom px-16 pb-8">

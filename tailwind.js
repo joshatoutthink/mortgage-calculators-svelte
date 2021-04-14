@@ -1,13 +1,14 @@
 module.exports = {
   theme: {
     color: {
-      black: '#323232',
+      black: "#323232",
       gray: {
-        verylight: '#efefef',
+        verylight: "#efefef",
       },
     },
     extend: {},
   },
   variants: {},
   plugins: [],
+  // important: ".tw",
 };
