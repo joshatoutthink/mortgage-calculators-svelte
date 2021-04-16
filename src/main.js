@@ -1,25 +1,36 @@
 import CalculatorContainer from "./calculators/CalculatorContainer.svelte";
 import "./main.css";
 
-window.addEventListener("DOMContentLoaded", () => {
-  const targetElements = document.querySelectorAll(".insert-calculator-here");
-  console.log(targetElements);
-  targetElements.forEach((targetElement) => {
-    const defaultCalc = targetElement.dataset.calc;
+const template = `
+  <style >
+    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/bundle.css";
+    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/public/bundle.css";
+  </style>
+`;
+class MortgageCalculator extends HTMLElement {
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = template;
+  }
+  connectedCallback() {
+    const defaultCalc = this.getAttribute("calc");
     const props = {
-      company: "Tabor Mortgage Group",
+      company: "Warp Speed Mortgage",
       showTabs: !Boolean(defaultCalc), // Only show tabs if no calculator is set as the default
 
       // style props
-      containerMaxWidth: "600px",
+      containerMaxWidth: this.getAttribute("app-width") || "520px",
     };
     if (defaultCalc) {
       props.defaultCalc = defaultCalc;
     }
 
     new CalculatorContainer({
-      target: targetElement,
+      target: this.shadowRoot,
       props,
     });
-  });
-});
+  }
+}
+
+window.customElements.define("mortgage-calculator", MortgageCalculator);

@@ -22,10 +22,6 @@ body * {
   box-sizing: inherit;
 }
 .insert-calculator-here {
-  position: relative;
-  min-height: 100vh;
-  background: var(--grey-200);
-  max-width: 520px;
 }
 
 .icon svg {
@@ -39,27 +35,33 @@ body * {
   height: 100%;
 }
 
-.insert-calculator-here .result-section {
+/* .insert-calculator-here  */
+.result-section {
   padding: 20px;
 }
-.insert-calculator-here h4 {
+/* .insert-calculator-here  */
+h4 {
   color: var(--grey-700);
   font-size: 22px;
 }
 
-.insert-calculator-here .result-grid {
+/* .insert-calculator-here  */
+.result-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(1px, 1fr));
   row-gap: 10px;
 }
-.insert-calculator-here .label,
-.insert-calculator-here .total.value {
+/* .insert-calculator-here  */
+.label,
+/* .insert-calculator-here  */.total.value {
   font-weight: bold;
 }
-.insert-calculator-here .value.total {
+/* .insert-calculator-here  */
+.value.total {
   text-shadow: 0 0 1px rgb(0 0 0 /0.1);
 }
-.insert-calculator-here .total {
+/* .insert-calculator-here  */
+.total {
   font-size: 18px;
   color: var(--purple);
   margin-top: 20px;

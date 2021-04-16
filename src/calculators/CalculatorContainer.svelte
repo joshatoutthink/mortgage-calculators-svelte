@@ -39,8 +39,11 @@
   section {
     max-width: 520px;
     min-height: 100%;
+    background: var(--grey-200);
   }
-
+  :global(*) {
+    box-sizing: border-box;
+  }
   :global(.group) {
     display: flex;
     gap: 20px;
