@@ -177,11 +177,11 @@
           <table class="">
             <thead>
               <tr class="">
-                <th class=""> Year </th>
-                <th class=""> Month </th>
-                <th class=""> Interest Payment </th>
-                <th class=""> Principal Payment </th>
-                <th class=""> Loan Balance </th>
+                <th class="">Year</th>
+                <th class="">Month</th>
+                <th class="">Interest Payment</th>
+                <th class="">Principal Payment</th>
+                <th class="">Loan Balance</th>
               </tr>
             </thead>
             <tbody>
@@ -213,8 +213,37 @@
   </div>
 </Calculator>
 
-<style>
+<style lang="scss">
   small {
     display: block;
+  }
+  //TABLE STYLING
+  table {
+    border-collapse: collapse;
+  }
+  tr:nth-of-type(even) {
+    background: var(--grey-300);
+
+    td:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    td:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+  th {
+    text-align: left;
+    padding: 5px;
+    background: var(--grey-400);
+    font-size: 14px;
+  }
+  td {
+    padding: 3px 5px;
+  }
+  thead th {
+    position: sticky;
+    top: 0;
   }
 </style>
