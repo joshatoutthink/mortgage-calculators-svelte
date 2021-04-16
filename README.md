@@ -28,8 +28,6 @@ its important to get the casing correctly or it will not work.
 ## TODO
 
 - Add more shortcode attributes
-- create a toggle component
 - Mortgage Payment Results
   - fix "insurance and taxes not included" text
-  - Use Toggle for toggling the Amortization Schedule
   - Style Amortization Schedule Table

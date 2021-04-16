@@ -10,6 +10,7 @@
   import FormField from "../formElements/FormField.svelte";
   import SubmitButton from "../formElements/SubmitButton.svelte";
   import Calculator from "../Calculator.svelte";
+  import Toggle from "../Toggle.svelte";
 
   // company prop for passing to Disclaimer
   export let company;
@@ -160,18 +161,19 @@
       </div>
     </div>
     <div class="result-section">
-      <label for="showAmortizationSchedule">
-        <input
-          type="checkbox"
-          id="showAmortizationSchedule"
-          name="showAmortizationSchedule"
-          bind:checked={showAmortizationSchedule}
-        />
-        Show Amortization Schedule
-      </label>
+      <Toggle
+        bind:isChecked={showAmortizationSchedule}
+        toggleActiveColor="var(--orange)"
+        toggleSize={10}
+      >
+        <span style="font-size:16px;"
+          >{!showAmortizationSchedule ? "Show" : "Hide"} Amortization Schedule</span
+        >
+      </Toggle>
+
       {#if showAmortizationSchedule}
         <h4 class="">Amortization Schedule</h4>
-        <div class="" style="max-height: 500px; overflow-y:scroll">
+        <div class="" style="max-height: 400px; overflow-y:scroll">
           <table class="">
             <thead>
               <tr class="">

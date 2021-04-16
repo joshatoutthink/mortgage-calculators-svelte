@@ -3,7 +3,6 @@
   export let toggleActiveColor;
   export let toggleInactiveColor;
   export let toggleSwitchColor;
-  export let label;
   export let isChecked;
 </script>
 
@@ -21,7 +20,7 @@
   `}
 >
   <label class="toggle__label">
-    {label}
+    <slot />
     <input
       type="checkbox"
       name=""
