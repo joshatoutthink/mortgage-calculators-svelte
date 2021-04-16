@@ -5,7 +5,6 @@ import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 import rollup_start_dev from "./rollup_start_dev";
 import preprocess from "svelte-preprocess";
-import css from "rollup-plugin-import-css";
 import postcss from "rollup-plugin-postcss";
 const production = !process.env.ROLLUP_WATCH;
 

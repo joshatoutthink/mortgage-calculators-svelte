@@ -3,8 +3,8 @@ import "./main.css";
 
 const template = `
   <style >
-    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/bundle.css";
-    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/public/bundle.css";
+    @import "${MC_Vars.globalStylesUrl}";
+    @import "${MC_Vars.scopedStylesUrl}";
   </style>
 `;
 class MortgageCalculator extends HTMLElement {
