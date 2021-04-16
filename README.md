@@ -29,5 +29,4 @@ its important to get the casing correctly or it will not work.
 
 - Add more shortcode attributes
 - Mortgage Payment Results
-  - fix "insurance and taxes not included" text
   - Style Amortization Schedule Table

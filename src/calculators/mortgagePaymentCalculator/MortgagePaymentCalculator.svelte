@@ -212,3 +212,9 @@
     </div>
   </div>
 </Calculator>
+
+<style>
+  small {
+    display: block;
+  }
+</style>
