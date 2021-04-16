@@ -7,6 +7,9 @@
   import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
+  import FormField from "../formElements/FormField.svelte";
+  import SubmitButton from "../formElements/SubmitButton.svelte";
+  import Calculator from "../Calculator.svelte";
 
   // company prop for passing to Disclaimer
   export let company;
@@ -99,158 +102,132 @@
   }
 </script>
 
-<div>
-  <CalculatorHeader
-    title="Affordability Calculator"
-    subtitle="Calculate How Much You Can Borrow"
-  />
-  <form on:submit|preventDefault={setCalculatedAndCalculate}>
-    <div class="bg-gray-custom px-16 py-8">
-      <div
-        class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
-        lg:w-4/5"
+<CalculatorHeader
+  title="Affordability Calculator"
+  subtitle="Calculate How Much You Can Borrow"
+/>
+<Calculator on:showForm={() => (calculated = false)} showResults={calculated}>
+  <form on:submit|preventDefault={setCalculatedAndCalculate} slot="form">
+    <div class="group">
+      <FormField
+        label="Annual Interest Rate"
+        id="annualInterestRate"
+        field={annualInterestRate}
       >
-        <div class="calculator-field lg:mr-16">
-          <label for="annualInterestRate" class="block">
-            Annual Interest Rate
-          </label>
-          <input
-            type="text"
-            id="annualInterestRate"
-            name="annualInterestRate"
-            bind:value={annualInterestRate.value}
-            class="mt-2"
-            required
-          />
-          {#if annualInterestRate.error}
-            <p class="text-red-500 text-2xl py-6">
-              {annualInterestRate.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
-          <label for="termOfTheLoan" class="block">Term of the Loan</label>
-          <select
-            name="termOfTheLoan"
-            id="termOfTheLoan"
-            bind:value={termOfTheLoan.value}
-            class="mt-2"
-            required
-          >
-            <option value="30" selected>30 Years</option>
-            <option value="25">25 Years</option>
-            <option value="20">20 Years</option>
-            <option value="15">15 Years</option>
-            <option value="10">10 Years</option>
-            <option value="5">5 Years</option>
-          </select>
-          <p class="text-2xl py-6">&nbsp;</p>
-        </div>
-        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
-          <label for="annualRealEstateTaxes" class="block">
-            Annual Real Estate Taxes
-          </label>
-          <input
-            type="text"
-            id="annualRealEstateTaxes"
-            name="annualRealEstateTaxes"
-            bind:value={annualRealEstateTaxes.value}
-            class="mt-2"
-            required
-          />
-        </div>
-        <div class="calculator-field mb-12 lg:mr-16 lg:mb-0">
-          <label for="annualHomeownersInsurance" class="block">
-            Annual Homeowners Insurance
-          </label>
-          <input
-            type="text"
-            id="annualHomeownersInsurance"
-            name="annualHomeownersInsurance"
-            bind:value={annualHomeownersInsurance.value}
-            class="mt-2"
-            required
-          />
-          <p class="text-2xl py-6">&nbsp;</p>
-        </div>
-        <div class="calculator-field lg:mr-16">
-          <label for="grossAnnualIncome" class="block">
-            Gross Annual Income
-          </label>
-          <input
-            type="text"
-            id="grossAnnualIncome"
-            name="grossAnnualIncome"
-            bind:value={grossAnnualIncome.value}
-            class="mt-2"
-            required
-          />
-          {#if grossAnnualIncome.error}
-            <p class="text-red-500 text-2xl py-6">
-              {grossAnnualIncome.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div>
-          <label for="monthlyDebtObligations" class="block">
-            Monthly Debt Obligations
-          </label>
-          <input
-            type="text"
-            id="monthlyDebtObligations"
-            name="monthlyDebtObligations"
-            bind:value={monthlyDebtObligations.value}
-            class="mt-2"
-            required
-          />
-        </div>
-      </div>
-    </div>
-    <div class="px-16">
-      <div
-        class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5"
+        <input
+          slot="input"
+          type="text"
+          id="annualInterestRate"
+          name="annualInterestRate"
+          bind:value={annualInterestRate.value}
+          class=""
+          required
+        />
+      </FormField>
+      <FormField
+        label="Annual Real Estate Taxes"
+        id="annualRealEstateTaxes"
+        field={annualRealEstateTaxes}
       >
-        <div class="btn-outer border-red-button">
-          <input
-            type="submit"
-            value="Calculate"
-            class="btn btn-action bg-red-button w-full"
-          />
-        </div>
-      </div>
+        <input
+          slot="input"
+          type="text"
+          id="annualRealEstateTaxes"
+          name="annualRealEstateTaxes"
+          bind:value={annualRealEstateTaxes.value}
+          class=""
+          required
+        />
+      </FormField>
     </div>
+    <div class="group">
+      <FormField
+        label="Term of the Loan"
+        id="termOfTheLoan"
+        field={termOfTheLoan}
+      >
+        <select
+          slot="input"
+          name="termOfTheLoan"
+          id="termOfTheLoan"
+          bind:value={termOfTheLoan.value}
+          class=""
+          required
+        >
+          <option value="30" selected>30 Years</option>
+          <option value="25">25 Years</option>
+          <option value="20">20 Years</option>
+          <option value="15">15 Years</option>
+          <option value="10">10 Years</option>
+          <option value="5">5 Years</option>
+        </select>
+      </FormField>
+
+      <FormField
+        label="Annual Homeowners Insurance"
+        id="annualHomeownersInsurance"
+        field={annualHomeownersInsurance}
+      >
+        <input
+          slot="input"
+          type="text"
+          id="annualHomeownersInsurance"
+          name="annualHomeownersInsurance"
+          bind:value={annualHomeownersInsurance.value}
+          class=""
+          required
+        />
+      </FormField>
+    </div>
+    <div class="group">
+      <FormField
+        label="Gross Annual Income"
+        id="grossAnnualIncome"
+        field={grossAnnualIncome}
+      >
+        <input
+          slot="input"
+          type="text"
+          id="grossAnnualIncome"
+          name="grossAnnualIncome"
+          bind:value={grossAnnualIncome.value}
+          class=""
+          required
+        />
+      </FormField>
+      <FormField
+        label="Monthly Debt Obligations"
+        id="monthlyDebtObligations"
+        field={monthlyDebtObligations}
+      >
+        <input
+          slot="input"
+          type="text"
+          id="monthlyDebtObligations"
+          name="monthlyDebtObligations"
+          bind:value={monthlyDebtObligations.value}
+          class=""
+          required
+        />
+      </FormField>
+    </div>
+
+    <SubmitButton />
   </form>
 
-  <div class="mt-10">
-    {#if calculated}
-      <div class="bg-gray-custom mt-10 py-4">
-        <div
-          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5"
-        >
-          <div class="mb-20 lg:mb-0">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Maximum Monthly Mortgage Payment
-            </p>
-            <p class="text-3xl font-light py-4">
-              ${maximumMonthlyMortgagePayment}
-            </p>
-          </div>
-          <div>
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Maximum Loan Amount
-            </p>
-            <p class="text-3xl font-light py-4">${maximumLoanAmount}</p>
-          </div>
+  <div class="" slot="results">
+    <div class="result-section">
+      <div class="result-grid">
+        <div class="label">Maximum Monthly Mortgage Payment</div>
+        <div class="value">
+          ${maximumMonthlyMortgagePayment}
         </div>
-        <div class="px-16">
-          <Disclaimer {company} />
-        </div>
+        <div class="label">Maximum Loan Amount</div>
+        <div class="value">${maximumLoanAmount}</div>
       </div>
-    {/if}
+      <div class="result-secton">
+        <Disclaimer {company} />
+      </div>
+    </div>
   </div>
-</div>
+</Calculator>

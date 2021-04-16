@@ -3,15 +3,37 @@
   export let subtitle;
 </script>
 
-<div class="px-16 py-8">
-  <h2
-    class="text-black text-4xl text-center font-medium mb-4 lg:text-6xl
-    lg:text-left">
+<header class="">
+  <h2 class="">
     {title}
   </h2>
-  <h3
-    class="text-black text-3xl text-center font-light lg:text-4xl lg:text-left
-    lg:font-normal">
+  <h3 class="">
     {subtitle}
   </h3>
-</div>
+</header>
+
+<style lang="scss">
+  header {
+    position: relative;
+    padding: 10px 20px;
+    background: white;
+  }
+  h2 {
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 0.5em;
+  }
+  h2:after {
+    position: absolute;
+    top: 100%;
+
+    left: 0;
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: var(--orange);
+  }
+  h3 {
+    font-weight: 400;
+  }
+</style>

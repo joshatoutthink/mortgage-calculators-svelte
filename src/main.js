@@ -1,35 +1,25 @@
 import CalculatorContainer from "./calculators/CalculatorContainer.svelte";
 import "./main.css";
 
-const mortgageCalcTemplate = `
-  <style>
-    @import "https://anniemurphypaul.local/wp-content/plugins/mortgage-calculators-svelte/public/bundle.css?ver=all"
-  </style>
-
-`;
-
-class MortgageCalcElement extends HTMLElement {
-  constructor() {
-    super();
-    this.shadow = this.attachShadow({ mode: "open" });
-    this.shadowRoot.innerHTML = mortgageCalcTemplate;
-  }
-
-  connectedCallback() {
-    const defaultCalc = this.getAttribute("data-calc");
+window.addEventListener("DOMContentLoaded", () => {
+  const targetElements = document.querySelectorAll(".insert-calculator-here");
+  console.log(targetElements);
+  targetElements.forEach((targetElement) => {
+    const defaultCalc = targetElement.dataset.calc;
     const props = {
-      company: "some company",
-      showTabs: !Boolean(defaultCalc),
+      company: "Tabor Mortgage Group",
+      showTabs: !Boolean(defaultCalc), // Only show tabs if no calculator is set as the default
+
+      // style props
+      containerMaxWidth: "600px",
     };
     if (defaultCalc) {
       props.defaultCalc = defaultCalc;
     }
 
     new CalculatorContainer({
-      target: this.shadowRoot,
+      target: targetElement,
       props,
     });
-  }
-}
-
-window.customElements.define("mortgage-calculator", MortgageCalcElement);
+  });
+});

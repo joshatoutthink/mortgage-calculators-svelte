@@ -7,6 +7,9 @@
   import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
+  import FormField from "../formElements/FormField.svelte";
+  import SubmitButton from "../formElements/SubmitButton.svelte";
+  import Calculator from "../Calculator.svelte";
 
   // company prop for passing to Disclaimer
   export let company;
@@ -72,194 +75,138 @@
   }
 </script>
 
-<div>
-  <CalculatorHeader
-    title="Mortgage Payment Calculator"
-    subtitle="Estimate Your Monthly Mortgage Payment"
-  />
-  <form on:submit|preventDefault={setCalculatedAndCalculate}>
-    <div class="bg-gray-custom px-16 py-8">
-      <div class="flex flex-col text-center lg:flex-row lg:text-left lg:w-4/5">
-        <div class="calculator-field lg:mr-16">
-          <label for="totalHomeLoanAmount" class="block">
-            Total Home Loan Amount
-          </label>
-          <input
-            type="text"
-            id="totalHomeLoanAmount"
-            name="totalHomeLoanAmount"
-            bind:value={totalHomeLoanAmount.value}
-            class="mt-2"
-            required
-          />
-          {#if totalHomeLoanAmount.error}
-            <p class="text-red-500 text-2xl py-6">
-              {totalHomeLoanAmount.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div class="calculator-field lg:mr-16">
-          <label for="annualInterestRate" class="block">
-            Annual Interest Rate
-          </label>
-          <input
-            type="text"
-            id="annualInterestRate"
-            name="annualInterestRate"
-            bind:value={annualInterestRate.value}
-            class="mt-2"
-            required
-          />
-          {#if annualInterestRate.error}
-            <p class="text-red-500 text-2xl py-6">
-              {annualInterestRate.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div>
-          <label for="termOfTheLoan" class="block">Term of the Loan</label>
-          <select
-            id="termOfTheLoan"
-            name="termOfTheLoan"
-            bind:value={termOfTheLoan.value}
-            class="mt-2"
-            required
-          >
-            <option value="30" selected>30 Years</option>
-            <option value="25">25 Years</option>
-            <option value="20">20 Years</option>
-            <option value="15">15 Years</option>
-            <option value="10">10 Years</option>
-            <option value="5">5 Years</option>
-          </select>
-          <p class="text-2xl py-6">&nbsp;</p>
-        </div>
-      </div>
-    </div>
-    <div class="px-16">
-      <div
-        class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5"
+<CalculatorHeader
+  title="Mortgage Payment Calculator"
+  subtitle="Estimate Your Monthly Mortgage Payment"
+/>
+<Calculator on:showForm={() => (calculated = false)} showResults={calculated}>
+  <form on:submit|preventDefault={setCalculatedAndCalculate} slot="form">
+    <div class="group">
+      <FormField
+        id="totalHomeLoanAmount"
+        field={totalHomeLoanAmount}
+        label="Total Home Loan Amount"
       >
-        <div class="btn-outer border-red-button">
-          <input
-            type="submit"
-            value="Calculate"
-            class="btn btn-action bg-red-button w-full"
-          />
-        </div>
-      </div>
+        <input
+          slot="input"
+          type="text"
+          id="totalHomeLoanAmount"
+          name="totalHomeLoanAmount"
+          bind:value={totalHomeLoanAmount.value}
+          class=""
+          required
+        />
+      </FormField>
+
+      <FormField
+        label="Annual Interest Rate"
+        id="annualInterestRate"
+        field={annualInterestRate}
+      >
+        <input
+          slot="input"
+          type="text"
+          id="annualInterestRate"
+          name="annualInterestRate"
+          bind:value={annualInterestRate.value}
+          class=""
+          required
+        />
+      </FormField>
     </div>
+    <FormField
+      label="Term of the Loan"
+      id="termOfTheLoan"
+      field={termOfTheLoan}
+    >
+      <select
+        slot="input"
+        id="termOfTheLoan"
+        name="termOfTheLoan"
+        bind:value={termOfTheLoan.value}
+        class=""
+        required
+      >
+        <option value="30" selected>30 Years</option>
+        <option value="25">25 Years</option>
+        <option value="20">20 Years</option>
+        <option value="15">15 Years</option>
+        <option value="10">10 Years</option>
+        <option value="5">5 Years</option>
+      </select>
+    </FormField>
+
+    <SubmitButton />
   </form>
 
-  <div class="mt-10">
-    {#if calculated}
-      <h3 class="text-4xl text-center px-16 lg:text-left">Loan Summary</h3>
-      <div class="bg-gray-custom mt-10 py-4">
-        <div
-          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5"
-        >
-          <div class="mb-20 lg:mb-0 lg:w-1/3">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Monthly Principal & Interest Payment
-            </p>
-            <p class="text-3xl font-light py-4">${payment}</p>
-            <p class="text-2xl text-center font-light lg:text-left">
-              (Insurance and taxes not included)
-            </p>
-          </div>
-          <div class="lg:w-1/3">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Loan Amount
-            </p>
-            <p class="text-3xl font-light py-4">{totalHomeLoanAmount.value}</p>
-          </div>
+  <div class="" slot="results">
+    <div class="result-section">
+      <h4 class="">Loan Summary</h4>
+      <div class="result-grid">
+        <div class="label">Monthly Principal & Interest Payment</div>
+        <div class="value">
+          ${payment}
+          <small class="">(Insurance and taxes not included)</small>
         </div>
-        <div
-          class="flex flex-col justify-between px-16 py-8 lg:flex-row lg:w-4/5"
-        >
-          <div class="mb-20 lg:mb-0 lg:w-1/3">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Interest Rate
-            </p>
-            <p class="text-3xl font-light py-4">{annualInterestRate.value}</p>
-          </div>
-          <div class="lg:w-1/3">
-            <p class="text-3xl text-center lg:text-4xl lg:text-left">
-              Term of the Loan
-            </p>
-            <p class="text-3xl font-light py-4">{termOfTheLoan.value} years</p>
-          </div>
-        </div>
-        <div class="px-16">
-          <input
-            type="checkbox"
-            id="showAmortizationSchedule"
-            name="showAmortizationSchedule"
-            bind:checked={showAmortizationSchedule}
-          />
-          <label for="showAmortizationSchedule">
-            Show Amortization Schedule
-          </label>
-          <Disclaimer {company} />
-        </div>
+
+        <div class="label">Loan Amount</div>
+        <div class="value">{totalHomeLoanAmount.value}</div>
+
+        <div class="label">Interest Rate</div>
+        <div class="value">{annualInterestRate.value}</div>
+
+        <div class="label">Term of the Loan</div>
+        <div class="value">{termOfTheLoan.value} years</div>
       </div>
+    </div>
+    <div class="result-section">
+      <label for="showAmortizationSchedule">
+        <input
+          type="checkbox"
+          id="showAmortizationSchedule"
+          name="showAmortizationSchedule"
+          bind:checked={showAmortizationSchedule}
+        />
+        Show Amortization Schedule
+      </label>
       {#if showAmortizationSchedule}
-        <div class="px-16 pt-10 pb-4">
-          <h3 class="text-4xl text-center lg:text-left">
-            Amortization Schedule
-          </h3>
-          <div
-            class="mt-10 overflow-y-scroll lg:w-4/5"
-            style="max-height: 500px;"
-          >
-            <table class="w-full">
-              <thead>
-                <tr class="text-white text-3xl">
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
-                    Year
-                  </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
-                    Month
-                  </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
-                    Interest Payment
-                  </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
-                    Principal Payment
-                  </th>
-                  <th class="bg-blue-500 p-4 sticky top-0 lg:p-0 lg:py-4">
-                    Loan Balance
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {#each amortizationSchedule as payment, i}
-                  {#if i !== 0}
-                    <tr
-                      class="text-center text-3xl {i % 2 === 0
-                        ? 'bg-gray-300'
-                        : null}"
-                    >
-                      <td class="p-4 lg:p-0 lg:py-4">{payment.year}</td>
-                      <td class="p-4 lg:p-0 lg:py-4">{payment.month}</td>
-                      <td class="p-4 lg:p-0 lg:py-4">${payment.interest}</td>
-                      <td class="p-4 lg:p-0 lg:py-4">${payment.principal}</td>
-                      <td class="p-4 lg:p-0 lg:py-4">
-                        ${payment.currentBalance}
-                      </td>
-                    </tr>
-                  {/if}
-                {/each}
-              </tbody>
-            </table>
-          </div>
+        <h4 class="">Amortization Schedule</h4>
+        <div class="" style="max-height: 500px; overflow-y:scroll">
+          <table class="">
+            <thead>
+              <tr class="">
+                <th class=""> Year </th>
+                <th class=""> Month </th>
+                <th class=""> Interest Payment </th>
+                <th class=""> Principal Payment </th>
+                <th class=""> Loan Balance </th>
+              </tr>
+            </thead>
+            <tbody>
+              {#each amortizationSchedule as payment, i}
+                {#if i !== 0}
+                  <tr
+                    class="text-center text-3xl {i % 2 === 0
+                      ? 'bg-gray-300'
+                      : null}"
+                  >
+                    <td class="">{payment.year}</td>
+                    <td class="">{payment.month}</td>
+                    <td class="">${payment.interest}</td>
+                    <td class="">${payment.principal}</td>
+                    <td class="">
+                      ${payment.currentBalance}
+                    </td>
+                  </tr>
+                {/if}
+              {/each}
+            </tbody>
+          </table>
         </div>
       {/if}
-    {/if}
+    </div>
+    <div class="result-section">
+      <Disclaimer {company} />
+    </div>
   </div>
-</div>
+</Calculator>

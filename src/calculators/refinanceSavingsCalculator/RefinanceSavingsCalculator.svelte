@@ -1,4 +1,7 @@
 <script>
+  import FormField from "../formElements/FormField.svelte";
+  import SubmitButton from "../formElements/SubmitButton.svelte";
+
   // import input formatting functions
   import {
     formatCurrency,
@@ -12,7 +15,7 @@
   import CalculatorHeader from "../CalculatorHeader.svelte";
   // import disclaimer component
   import Disclaimer from "../Disclaimer.svelte";
-
+  import Calculator from "../Calculator.svelte";
   // company prop for passing to Disclaimer
   export let company;
 
@@ -133,64 +136,58 @@
   }
 </script>
 
-<div>
-  <CalculatorHeader
-    title="Refinance Savings Calculator"
-    subtitle="Calculate How Much You Will Save By Refinancing"
-  />
-  <form on:submit|preventDefault={setCalculatedAndCalculate}>
-    <div class="bg-gray-custom px-16 py-8">
-      <div
-        class="flex flex-col text-center lg:flex-row lg:flex-wrap lg:text-left
-        lg:w-4/5"
-      >
-        <div class="calculator-field lg:mr-16">
-          <label for="originalInterestRate" class="block">
-            Original Interest Rate
-          </label>
+<CalculatorHeader
+  title="Refinance Savings Calculator"
+  subtitle="Calculate How Much You Will Save By Refinancing"
+/>
+<Calculator on:showForm={() => (calculated = false)} showResults={calculated}>
+  <form on:submit|preventDefault={setCalculatedAndCalculate} slot="form">
+    <div class="">
+      <div class="group">
+        <FormField
+          id="originalInterestRate"
+          label="Original Interest Rate"
+          field={originalInterestRate}
+        >
           <input
+            slot="input"
             type="text"
             id="originalInterestRate"
             name="originalInterestRate"
             bind:value={originalInterestRate.value}
-            class="mt-2"
+            class=""
             required
           />
-          {#if originalInterestRate.error}
-            <p class="text-red-500 text-2xl py-6">
-              {originalInterestRate.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div class="calculator-field lg:mr-16">
-          <label for="originalLoanAmount" class="block">
-            Original Loan Amount
-          </label>
+        </FormField>
+
+        <FormField
+          id="originalLoanAmount"
+          label="Original Loan Amount"
+          field={originalLoanAmount}
+        >
           <input
+            slot="input"
             type="text"
             id="originalLoanAmount"
             name="originalLoanAmount"
             bind:value={originalLoanAmount.value}
-            class="mt-2"
+            class=""
             required
           />
-          {#if originalLoanAmount.error}
-            <p class="text-red-500 text-2xl py-6">
-              {originalLoanAmount.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2l py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div class="calculator-field mb-20 lg:mr-16 lg:mb-0">
-          <label for="originalLoanTerm" class="block">Original Loan Term</label>
+        </FormField>
+      </div>
+      <div class="group">
+        <FormField
+          id="originalLoanTerm"
+          label="Original Loan Term"
+          field={originalLoanTerm}
+        >
           <select
+            slot="input"
             name="originalLoanTerm"
             id="originalLoanTerm"
             bind:value={originalLoanTerm.value}
-            class="mt-2"
+            class=""
             required
           >
             <option value="30" selected>30 Years</option>
@@ -200,182 +197,136 @@
             <option value="10">10 Years</option>
             <option value="5">5 Years</option>
           </select>
-          <p class="text-2xl py-6">&nbsp;</p>
-        </div>
-        <div class="calculator-field lg:mr-16">
-          <label for="timeLeftToPayOnOriginalLoan" class="block">
-            Time Left to Pay on Original Loan
-          </label>
+        </FormField>
+
+        <FormField
+          id="timeLeftToPayOnOriginalLoan"
+          label="Time Left to Pay on Original Loan"
+          field={timeLeftToPayOnOriginalLoan}
+        >
           <input
+            slot="input"
             type="text"
             id="timeLeftToPayOnOriginalLoan"
             name="timeLeftToPayOnOriginalLoan"
             bind:value={timeLeftToPayOnOriginalLoan.value}
             use:setCursorPosition={" Months"}
-            class="mt-2"
+            class=""
             required
           />
-          {#if timeLeftToPayOnOriginalLoan.error}
-            <p class="text-red-500 text-2xl py-6">
-              {timeLeftToPayOnOriginalLoan.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div class="calculator-field lg:mr-16">
-          <label for="newInterestRate" class="block">New Interest Rate</label>
+        </FormField>
+      </div>
+
+      <div class="group">
+        <FormField
+          id="newInterestRate"
+          field={newInterestRate}
+          label="New Interest Rate"
+        >
           <input
+            slot="input"
             type="text"
             id="newInterestRate"
             name="newInterestRate"
             bind:value={newInterestRate.value}
-            class="mt-2"
+            class=""
             required
           />
-          {#if newInterestRate.error}
-            <p class="text-red-500 text-2xl py-6">
-              {newInterestRate.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div>
-          <label for="newLoanAmount" class="block">New Loan Amount</label>
+        </FormField>
+
+        <FormField
+          id="newLoanAmount"
+          field={newLoanAmount}
+          label="New Loan Amount"
+        >
           <input
+            slot="input"
             type="text"
             id="newLoanAmount"
             name="newLoanAmount"
             bind:value={newLoanAmount.value}
-            class="mt-2"
+            class=""
             required
           />
-          {#if newLoanAmount.error}
-            <p class="text-red-500 text-2xl py-6">
-              {newLoanAmount.errorMessage}
-            </p>
-          {:else}
-            <p class="text-2xl py-6">&nbsp;</p>
-          {/if}
-        </div>
-        <div>
-          <label for="newLoanTerm" class="block">New Loan Term</label>
-          <select
-            name="newLoanTerm"
-            id="newLoanTerm"
-            bind:value={newLoanTerm.value}
-            class="mt-2"
-            required
-          >
-            <option value="30" selected>30 Years</option>
-            <option value="25">25 Years</option>
-            <option value="20">20 Years</option>
-            <option value="15">15 Years</option>
-            <option value="10">10 Years</option>
-            <option value="5">5 Years</option>
-          </select>
-        </div>
+        </FormField>
       </div>
-    </div>
-    <div class="px-16">
-      <div
-        class="flex items-center justify-center border-b border-gray-500 py-10
-        lg:w-4/5"
+
+      <FormField
+        id="newLoanTerm"
+        field={newLoanTerm}
+        label="New Loan Term"
+        style="--field-width:auto"
       >
-        <div class="btn-outer border-red-button">
-          <input
-            type="submit"
-            value="Calculate"
-            class="btn btn-action bg-red-button w-full"
-          />
-        </div>
-      </div>
+        <select
+          slot="input"
+          name="newLoanTerm"
+          id="newLoanTerm"
+          bind:value={newLoanTerm.value}
+          class=""
+          required
+        >
+          <option value="30" selected>30 Years</option>
+          <option value="25">25 Years</option>
+          <option value="20">20 Years</option>
+          <option value="15">15 Years</option>
+          <option value="10">10 Years</option>
+          <option value="5">5 Years</option>
+        </select>
+      </FormField>
     </div>
+    <SubmitButton />
   </form>
 
-  <div class="mt-10">
-    {#if calculated}
-      <div class="mt-10 py-12">
-        <p
-          class="text-4xl text-center font-medium px-16 pb-8 lg:text-5xl
-          lg:text-left lg:font-normal"
-        >
-          Old Loan
-        </p>
-        <div class="bg-gray-custom px-16">
-          <div class="lg:w-4/5">
-            <div class="flex flex-col pt-10 pb-16 lg:flex-row lg:items-center">
-              <div class="mb-20 lg:mb-0 lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Monthly Payment
-                </p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.monthlyPayment}
-                </p>
-              </div>
-              <div class="mb-20 lg:mb-0 lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Remaining Loan Balance
-                </p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.remainingBalance}
-                </p>
-              </div>
-              <div class="lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Remaining Total Cost
-                </p>
-                <p class="text-3xl font-light">
-                  ${oldLoanValues.remainingTotal}
-                </p>
-              </div>
-            </div>
+  <div class="" slot="results">
+    <div class="result-section">
+      <h4>Old Loan</h4>
+      <div class="">
+        <div class="result-grid">
+          <div class="label">Monthly Payment</div>
+          <div class="value">
+            ${oldLoanValues.monthlyPayment}
           </div>
-        </div>
 
-        <p
-          class="text-4xl text-center font-medium px-16 py-8 lg:text-5xl
-          lg:text-left lg:font-normal"
-        >
-          New Loan
-        </p>
-        <div class="bg-gray-custom px-16 pb-8">
-          <div class="lg:w-4/5">
-            <div class="flex flex-col pt-10 pb-8 lg:flex-row lg:items-center">
-              <div class="mb-20 lg:mb-0 lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Monthly Payment
-                </p>
-                <p class="text-3xl font-light">
-                  ${newLoanValues.monthlyPayment}
-                </p>
-              </div>
-              <div class="mb-20 lg:mb-0 lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Monthly Savings
-                </p>
-                <p class="text-3xl font-light">
-                  ${newLoanValues.monthlySavings}
-                </p>
-              </div>
-              <div class="lg:w-1/3">
-                <p class="text-3xl text-center lg:text-4xl lg:text-left">
-                  Remaining Total Cost
-                </p>
-                <p class="text-3xl font-light">${newLoanValues.totalCost}</p>
-              </div>
-            </div>
-            <div class="text-center pt-8">
-              <p class="text-3xl text-center lg:text-4xl">Total Savings</p>
-              <p class="text-3xl font-light">${totalSavings}</p>
-            </div>
+          <div class="label">Remaining Loan Balance</div>
+          <div class="value">
+            ${oldLoanValues.remainingBalance}
           </div>
-        </div>
-        <div class="px-16">
-          <Disclaimer {company} />
+
+          <div class="label ">Remaining Total Cost</div>
+          <div class="value">
+            ${oldLoanValues.remainingTotal}
+          </div>
         </div>
       </div>
-    {/if}
+    </div>
+
+    <div class="result-section">
+      <h4>New Lown</h4>
+
+      <div class="result-grid">
+        <div class="label">Monthly Payment</div>
+        <div class="value">
+          ${newLoanValues.monthlyPayment}
+        </div>
+
+        <div class="label">Monthly Savings</div>
+        <div class="value">
+          ${newLoanValues.monthlySavings}
+        </div>
+
+        <div class="label">Remaining Total Cost</div>
+        <div class="value">${newLoanValues.totalCost}</div>
+
+        <div class="label total">Total Savings</div>
+        <div class="value total">${totalSavings}</div>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <Disclaimer {company} />
+    </div>
   </div>
-</div>
+</Calculator>
+
+<style lang="scss">
+</style>

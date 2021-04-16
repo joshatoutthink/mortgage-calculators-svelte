@@ -1,112 +1,66 @@
-@import "tailwindcss/base";
-
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities";
-
 :root {
-  font-size: 10px;
+  --orange: #e8940f;
+  --purple: #764986;
 
-  font-family: "Roboto", sans-serif;
+  --grey-50: #f9fafb;
+  --grey-100: #f3f4f6;
+  --grey-200: #e5e7eb;
+  --grey-300: #d1d5db;
+  --grey-400: #9ca3af;
+  --grey-500: #6b7280;
+  --grey-600: #4b5563;
+  --grey-700: #374151;
+  --grey-800: #1f2937;
+  --grey-900: #111827;
+}
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body * {
+  box-sizing: inherit;
+}
+.insert-calculator-here {
+  position: relative;
+  min-height: 100vh;
+  background: var(--grey-200);
+  max-width: 520px;
 }
 
-input,
-label,
-select,
-option {
-  font-size: 1.8rem;
-}
-
-input[type="text"],
-select {
-  @apply px-4;
-
-  height: 35px;
-  width: 100%;
-
-  border: 1px solid #ccc;
-}
-
-.bg-gray-custom {
-  background-color: #f2f2f2;
-}
-
-/** buttons **/
-.btn {
-  @apply border-b border-transparent text-center text-white font-medium px-2 py-3 cursor-pointer appearance-none;
-
-  background-color: #821c56;
-
-  transition: padding 0.2s ease-in-out;
-}
-
-.btn-action {
-  font-size: 1.6rem;
-}
-
-.btn-outer {
-  @apply border-2 border-solid bg-transparent p-2 flex items-center justify-center cursor-pointer;
-
-  border-color: #821c56;
-
-  height: 54px;
-  width: 275px;
-
-  transition: padding 0.25s ease-in-out;
-}
-
-.btn-outer:hover {
-  @apply p-0;
-}
-
-. btn-outer:hover > .btn {
-  @apply px-2 py-5;
-}
-
-@media (min-width: 768px) {
-  .btn-action {
-    font-size: 2rem;
-  }
-
-  .btn-outer {
-    @apply p-4;
-
-    height: 70px;
-  }
-
-  .btn-outer:hover > .btn {
-    @apply px-4 py-8;
-  }
-}
-
-@media (min-width: 1024px) {
-  input[type="text"],
-  select {
-    width: 240px;
-  }
-}
-
-.calculator-select-item {
-  transition: transform 0.25s ease-in-out;
-}
-
-.calculator-select-item:hover {
-  @apply bg-black;
-}
-
-.calculator-select-item:hover p {
-  @apply text-white;
-}
-
-.calculator-select-item:hover svg {
-  transform: scale(1.1);
-}
-.calculator-select-item svg {
+.icon svg {
   height: 100%;
-
-  transition: transform 0.25s ease-in-out;
 }
 
-.calculator-field {
-  width: 275px;
+.grey-bg {
+  background: var(--grey-200);
+}
+.wrapper {
+  height: 100%;
+}
+
+.insert-calculator-here .result-section {
+  padding: 20px;
+}
+.insert-calculator-here h4 {
+  color: var(--grey-700);
+  font-size: 22px;
+}
+
+.insert-calculator-here .result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(1px, 1fr));
+  row-gap: 10px;
+}
+.insert-calculator-here .label,
+.insert-calculator-here .total.value {
+  font-weight: bold;
+}
+.insert-calculator-here .value.total {
+  text-shadow: 0 0 1px rgb(0 0 0 /0.1);
+}
+.insert-calculator-here .total {
+  font-size: 18px;
+  color: var(--purple);
+  margin-top: 20px;
 }
