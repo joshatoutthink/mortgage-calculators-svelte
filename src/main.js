@@ -14,19 +14,19 @@ class MortgageCalculator extends HTMLElement {
     this.shadowRoot.innerHTML = template;
   }
   connectedCallback() {
-    const defaultCalc = this.getAttribute("calc");
+    const defaultCalculator = this.getAttribute("calc");
     const props = {
       company: "Warp Speed Mortgage",
-      showTabs: !Boolean(defaultCalc), // Only show tabs if no calculator is set as the default
+      showTabs: !Boolean(defaultCalculator), // Only show tabs if no calculator is set as the default
 
       // style props
       //? at the moment these are not being used
       // containerMaxWidth: this.getAttribute("app-width") || "520px",
     };
-    if (defaultCalc) {
-      props.defaultCalc = defaultCalc;
+    if (defaultCalculator) {
+      props.defaultCalculator = defaultCalculator;
     }
-
+    console.log(props);
     new CalculatorContainer({
       target: this.shadowRoot,
       props,
