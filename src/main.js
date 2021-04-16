@@ -20,7 +20,8 @@ class MortgageCalculator extends HTMLElement {
       showTabs: !Boolean(defaultCalc), // Only show tabs if no calculator is set as the default
 
       // style props
-      containerMaxWidth: this.getAttribute("app-width") || "520px",
+      //? at the moment these are not being used
+      // containerMaxWidth: this.getAttribute("app-width") || "520px",
     };
     if (defaultCalc) {
       props.defaultCalc = defaultCalc;
