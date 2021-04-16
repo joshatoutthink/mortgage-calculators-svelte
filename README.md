@@ -28,5 +28,3 @@ its important to get the casing correctly or it will not work.
 ## TODO
 
 - Add more shortcode attributes
-- Mortgage Payment Results
-  - Style Amortization Schedule Table
