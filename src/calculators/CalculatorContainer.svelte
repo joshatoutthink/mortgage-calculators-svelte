@@ -48,6 +48,9 @@
     display: flex;
     gap: 20px;
     align-items: stretch;
+    @media(max-width:400px){
+      display:block;
+    }
   }
   :global(form) {
     padding: 20px;

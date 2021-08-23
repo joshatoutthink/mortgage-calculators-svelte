@@ -32,6 +32,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media(max-width:400px){
+      width:100%;
+      max-width:100%;
+    }
   }
   label {
     display: flex;
